@@ -1,0 +1,13 @@
+.MainHeader {
+    background: #2c3e50;
+    color: aliceblue;
+    /*background-color: blueviolet;
+    letter-spacing: 1px;
+    height: 5em;
+    padding: 2px, 1%;
+    background: #2c3e50;
+    color: #fff;*/
+}
+.HeaderDiv{
+    float: left;
+}
