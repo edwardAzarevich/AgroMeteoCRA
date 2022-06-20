@@ -1,12 +1,12 @@
-import './App.css';
+//import './App.css';
 //import MainHeader from 'header'
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 
 const App = () => {
     return (
         <div>
-            <h1>hi</h1>
+            <h1>asdfsadfsad</h1>
         </div>
     )
 }
