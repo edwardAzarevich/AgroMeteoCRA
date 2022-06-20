@@ -5,7 +5,7 @@ function MainHeader() {
         <div >
             <header>
                 <div className='MainHeader'>
-                    <div>123</div>
+                    <div>Peleng</div>
                     <nav><a>First Link</a><a>Second Link</a><a>Third Link</a></nav>
                 </div>
             </header>
