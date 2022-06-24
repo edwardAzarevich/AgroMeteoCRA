@@ -1,10 +1,10 @@
 import React from 'react';
-//import ReactDOM from 'react-dom/client';
 import './index.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App'
+import App from './components/app/App'
 import * as serviceWorker from './serviceWorker';
+import Headers from './components/header/header'
 
 const Footer = () => (
     <div className="footer">Created with love</div>
@@ -21,9 +21,12 @@ const Footer = () => (
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
     <BrowserRouter>
+        <Headers />
         <Routes>
-            <Route path="/" element={<App />} />
+            <Route exact path="/" element={<App />} />
+            <Route exact path="/footer" element={<Footer />} />
         </Routes>
     </BrowserRouter>
 );
