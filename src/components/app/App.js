@@ -3,6 +3,8 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 
+
+
 const App = () => {
     return (
         <div>
@@ -10,24 +12,5 @@ const App = () => {
         </div>
     )
 }
-
-
-
-/*class App extends React.Component {
-    state = {
-        isLog: false
-    }
-
-}
-
-function App() {
-    return (
-        <div className="App">
-            <MainHeader />
-        </div>
-    );
-}*/
-
-
 
 export default App;
