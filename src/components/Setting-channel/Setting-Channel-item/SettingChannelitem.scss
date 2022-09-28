@@ -1,0 +1,40 @@
+.setting-select-input {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid gray;
+    align-items: center;
+    width: 94%;
+    height: 80%;
+    background-color: rgb(239, 182, 187);
+}
+
+.table-settring {
+    width: 100px;
+    height: 150px;
+}
+
+input::-webkit-calendar-picker-indicator {
+    opacity: 100;
+}
+
+.setting-select-datalist {
+    max-height: 10rem;
+    overflow-y: auto
+}
+
+.block-configuration {
+    display: inline-block;
+}
+
+.table-setting-name {
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+.text-empty-checker:not([value='']) {
+    background-color: rgb(167, 187, 188);
+}
+
