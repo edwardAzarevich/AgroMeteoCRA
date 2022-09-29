@@ -1,24 +1,46 @@
 import './SettingChannelitem.scss';
 
-import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItemSpeed.js';
+import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem.js';
 
 // Временное хранилиже данных
-const deviceName = ['СФ-03', 'PTB210', 'БА-1'];
 
-const speedList = [
-    { speed: 1200 },
-    { speed: 9600 },
-    { speed: 19200 }
+const deviceName = [
+    { item: 'СФ-03' },
+    { item: 'PTB210' },
+    { item: 'БА-1' }
 ];
 
-const interfaceForConnection = ['RS232', 'RS485', 'V.23'];
+const speedList = [
+    { item: 1200 },
+    { item: 9600 },
+    { item: 19200 }
+];
 
-const itemChannel = () => {
+const interfaceListConnection = [
+    { item: 'RS232' },
+    { item: 'RS485' },
+    { item: 'V.23' }
+];
+
+const itemChannel = ({ numberChannel }) => {
+
     const elementSpeed = speedList.map(item => {
         return (
             <ListChannelSpeed {...item} />
         )
-    })
+    });
+
+    const elementNameDevice = deviceName.map(item => {
+        return (
+            <ListChannelSpeed {...item} />
+        )
+    });
+
+    const elementInterfaceConnection = interfaceListConnection.map(item => {
+        return (
+            <ListChannelSpeed {...item} />
+        )
+    });
 
 
     return (
@@ -26,33 +48,22 @@ const itemChannel = () => {
             <div className="block-configuration">
                 <table className="table-settring">
                     <thead>
-                        <tr className="table-setting-name"><td>Ch<strong className="table-setting-number">0</strong></td></tr>
+                        <tr className="table-setting-name"><td>Ch<strong className="table-setting-number">{numberChannel}</strong></td></tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <input type="text" list="comboBox-1" id="cb1" className="csss setting-select-input"
-                                    autoComplete="off" />
+                                    autoComplete="off" placeholder="Тип" />
                                 <datalist id="comboBox-1">
-                                    <option value="item 1" />
-                                    <option value="item 2" />
-                                    <option value="item 3" />
-                                    <option value="item 4" />
-                                    <option value="item 5" />
-                                    <option value="item 6" />
-                                    <option value="item 7" />
-                                    <option value="item 8" />
-                                    <option value="item 9" />
-                                    <option value="item 10" />
-                                    <option value="item 11" />
-                                    <option value="item 12" />
+                                    {elementInterfaceConnection}
                                 </datalist>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="text" list="comboBox-2" id="cb2" className="setting-select-input"
-                                    autoComplete="off" />
+                                    autoComplete="off" placeholder="Скорость" />
                                 <datalist id="comboBox-2">
                                     {elementSpeed}
                                 </datalist>
@@ -61,62 +72,51 @@ const itemChannel = () => {
                         <tr>
                             <td>
                                 <input type="text" list="comboBox-3" id="cb3" className="setting-select-input setting-select-datalist"
-                                    autoComplete="off" />
+                                    autoComplete="off" placeholder="Имя" />
                                 <datalist id="comboBox-3">
-                                    <option value="item 1" />
-                                    <option value="item 2" />
-                                    <option value="item 3" />
-                                    <option value="item 4" />
-                                    <option value="item 5" />
-                                    <option value="item 6" />
-                                    <option value="item 7" />
-                                    <option value="item 8" />
-                                    <option value="item 9" />
-                                    <option value="item 10" />
-                                    <option value="item 11" />
-                                    <option value="item 12" />
+                                    {elementNameDevice}
                                 </datalist>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус1" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус2" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус3" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус4" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус5" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус6" />
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <input type="text" className="setting-select-input text-empty-checker" />
+                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус7" />
                             </td>
                         </tr>
                     </tbody>
