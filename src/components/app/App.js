@@ -1,16 +1,33 @@
-//import './App.css';
-//import MainHeader from 'header'
-import { Routes, Route } from 'react-router-dom';
-import React from 'react';
+//import './header.css';
+import './App.css';
+import Header from '../header/header';
+import SideBar from '../SideBar/sideBar';
+import { Component } from 'react';
+import SettingChannel from '../Setting-channel/Setting-Channel-list/SettingChannel'
+
+class App extends Component {
+
+    render() {
+        return (
+            <div>
+                <Header />
+                <table>
+                    <tbody>
+                        <tr>
+                            <td className='table-menu'>
+                                <SideBar />
+                            </td>
+                            <td className='table-setting-chennel'>
+                                <SettingChannel />
+                            </td>
+                        </tr>
+                    </tbody>
 
 
-
-const App = () => {
-    return (
-        <div>
-            <h1></h1>
-        </div>
-    )
+                </table>
+            </div>
+        )
+    }
 }
 
 export default App;

@@ -24,21 +24,21 @@ const interfaceListConnection = [
 
 const itemChannel = ({ numberChannel }) => {
 
-    const elementSpeed = speedList.map(item => {
+    const elementSpeed = speedList.map((item, i) => {
         return (
-            <ListChannelSpeed {...item} />
+            <ListChannelSpeed key={i} {...item} />
         )
     });
 
-    const elementNameDevice = deviceName.map(item => {
+    const elementNameDevice = deviceName.map((item, i) => {
         return (
-            <ListChannelSpeed {...item} />
+            <ListChannelSpeed key={i} {...item} />
         )
     });
 
-    const elementInterfaceConnection = interfaceListConnection.map(item => {
+    const elementInterfaceConnection = interfaceListConnection.map((item, i) => {
         return (
-            <ListChannelSpeed {...item} />
+            <ListChannelSpeed key={i} {...item} />
         )
     });
 
@@ -53,7 +53,7 @@ const itemChannel = ({ numberChannel }) => {
                     <tbody>
                         <tr>
                             <td>
-                                <input type="text" list="comboBox-1" id="cb1" className="csss setting-select-input"
+                                <input type="text" list="comboBox-1" id="cb1" className="setting-select-input"
                                     autoComplete="off" placeholder="Тип" />
                                 <datalist id="comboBox-1">
                                     {elementInterfaceConnection}

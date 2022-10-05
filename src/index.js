@@ -10,6 +10,7 @@ import SideBar from './components/SideBar/sideBar';
 import SettingChannel from './components/Setting-channel/Setting-Channel-list/SettingChannel';
 
 
+
 const Footer = () => (
     <div className="footer">Created with love</div>
 );
@@ -26,20 +27,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <BrowserRouter>
-        <Headers />
+        <App />
+        {/* <Headers /> */}
+        {/* <SideBar /> */}
         {/* <Device /> */}
         {/* <SideBar /> */}
         <Routes>
-            <Route exact path="/" element={<App />} />
             <Route exact path="/footer" element={<Footer />} />
-            <Route exact path='/Setting' element={<SettingChannel />} />
+            {/* <Route exact path='/' element={<SettingChannel />} /> */}
         </Routes>
     </BrowserRouter>
 );
 
-/*ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>, document.getElementById('root'));*/
-
 serviceWorker.unregister();
+
+
