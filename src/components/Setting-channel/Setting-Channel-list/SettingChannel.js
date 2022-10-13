@@ -1,6 +1,7 @@
 import './SettingChannel.scss';
 import ItemSelectDevice from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
+
 // Количество настраиваемых каналов (в дальнейшем переделать)
 const nameChannel = [
     { numberChannel: 1 },
@@ -22,27 +23,43 @@ class SettingChannel extends Component {
             { speed: "speed1" },
             { interface: "interface" }
         ];
+        const arrayForObject = new Array();
+        // array for 
+        const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
 
-        const settingListComponetn = document.querySelectorAll('.block-configuration');
-        settingListComponetn.forEach(elementList => {
-            let paramsElementList = [
-                { name: "" },
-                { speed: "" },
-                { interface: "" }
-            ];
-            let i = 0;
+        const settingListComponent = document.querySelectorAll('.block-configuration');
+        const numbChannel = document.querySelectorAll('.table-setting-number');
+        //
+        let nubmerChannel = 0;
+        settingListComponent.forEach(elementList => {
+
+            let paramsElementList = new Object();
+            let i = 1;
             let itemComponetn = elementList.querySelectorAll('.setting-select-input');
 
             itemComponetn.forEach(elementItem => {
                 if (elementItem.value != "") {
-                    paramsElementList['name'] = elementItem.value;
+
+                    paramsElementList[`${arrayForObjectList[i]}`] = elementItem.value;
                     i++;
                     //settingJson.add(elementItem.value);
-                    console.log(paramsElementList);
+
                 }
             });
+            // Determine the number of elements in an object
+            const sizeParamsElementList = Object.keys(paramsElementList).length;
 
+            // if at least one cell is empty, nothing will be sent
+            if (sizeParamsElementList === 3) {
+                paramsElementList[`${arrayForObjectList[0]}`] = numbChannel[nubmerChannel].textContent;
+                arrayForObject.push(paramsElementList);
+                console.log(arrayForObject);
+            }
+            nubmerChannel++;
         });
+
+
+
         //const valuuue = speedTest[1].querySelectorAll('.setting-select-input');
         //console.log(valuuue[0]);
         return settingJson;
@@ -65,6 +82,7 @@ class SettingChannel extends Component {
             </div >
         )
     }
+
 }
 
 export default SettingChannel;
