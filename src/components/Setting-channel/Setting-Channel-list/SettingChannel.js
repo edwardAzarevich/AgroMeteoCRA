@@ -16,17 +16,28 @@ const nameChannel = [
     { numberChannel: 10 },
 ];
 
-class SettingChannel extends Component {
-    saveButton = () => {
-        let settingJson = [
-            { name: "name1" },
-            { speed: "speed1" },
-            { interface: "interface" }
-        ];
-        const arrayForObject = new Array();
-        // array for 
-        const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
 
+// need code review
+class SettingChannel extends Component {
+
+    onSaveButton = () => {
+        /*const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
+        const settingListComponent = document.querySelectorAll('.block-configuration');
+        const numbChannel = document.querySelectorAll('.table-setting-number');*/
+        const mainObjectForJSON = {
+            block_number: 0,
+            ch: this.CreateParamsArray()
+        };
+
+        console.log(mainObjectForJSON);
+        return 0;
+    }
+
+    //Creating an array with channel settings objects
+    CreateParamsArray = () => {
+
+        const arrayForObject = new Array();
+        const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
         const settingListComponent = document.querySelectorAll('.block-configuration');
         const numbChannel = document.querySelectorAll('.table-setting-number');
         //
@@ -39,11 +50,8 @@ class SettingChannel extends Component {
 
             itemComponetn.forEach(elementItem => {
                 if (elementItem.value != "") {
-
                     paramsElementList[`${arrayForObjectList[i]}`] = elementItem.value;
                     i++;
-                    //settingJson.add(elementItem.value);
-
                 }
             });
             // Determine the number of elements in an object
@@ -53,17 +61,13 @@ class SettingChannel extends Component {
             if (sizeParamsElementList === 3) {
                 paramsElementList[`${arrayForObjectList[0]}`] = numbChannel[nubmerChannel].textContent;
                 arrayForObject.push(paramsElementList);
-                console.log(arrayForObject);
+                //console.log(arrayForObject);
             }
             nubmerChannel++;
         });
 
-
-
-        //const valuuue = speedTest[1].querySelectorAll('.setting-select-input');
-        //console.log(valuuue[0]);
-        return settingJson;
-    }
+        return arrayForObject;
+    };
 
     render() {
         const listChannelMap = nameChannel.map((item, i) => {
@@ -78,11 +82,10 @@ class SettingChannel extends Component {
                 <ul className='test' >
                     {listChannelMap}
                 </ul>
-                {<button onClick={this.saveButton} className='Main save'>Сохранить</button>}
+                {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
             </div >
         )
     }
-
 }
 
 export default SettingChannel;

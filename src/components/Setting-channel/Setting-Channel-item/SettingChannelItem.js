@@ -1,4 +1,5 @@
 import './SettingChannelitem.scss';
+import { Component } from 'react';
 
 import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem.js';
 
@@ -22,111 +23,119 @@ const interfaceListConnection = [
     { item: 'V.23' }
 ];
 
-const itemChannel = ({ numberChannel }) => {
+class ItemChannel extends Component {
 
-    const elementSpeed = speedList.map((item, i) => {
+    constructor(props) {
+        super(props);
+
+    }
+
+    render() {
+        const { numberChannel } = this.props;
+
+
+        const elementSpeed = speedList.map((item, i) => {
+            return (
+                <ListChannelSpeed key={i} {...item} />
+            )
+        });
+
+        const elementNameDevice = deviceName.map((item, i) => {
+            return (
+                <ListChannelSpeed key={i} {...item} />
+            )
+        });
+
+        const elementInterfaceConnection = interfaceListConnection.map((item, i) => {
+            return (
+                <ListChannelSpeed key={i} {...item} />
+            )
+        });
+
         return (
-            <ListChannelSpeed key={i} {...item} />
+            <li className="list-group-item d-flex justify-content-between">
+                <div className="block-configuration">
+                    <table className="table-settring">
+                        <thead>
+                            <tr className="table-setting-name"><td>Ch<strong className="table-setting-number">{numberChannel}</strong></td></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" list="comboBox-1" id="cb1" className="setting-select-input"
+                                        autoComplete="off" placeholder="Тип" />
+                                    <datalist id="comboBox-1">
+                                        {elementInterfaceConnection}
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" list="comboBox-2" id="cb2" className="setting-select-input"
+                                        autoComplete="off" placeholder="Скорость" />
+                                    <datalist id="comboBox-2">
+                                        {elementSpeed}
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" list="comboBox-3" id="cb3" className="setting-select-input setting-select-datalist"
+                                        autoComplete="off" placeholder="Имя" />
+                                    <datalist id="comboBox-3">
+                                        {elementNameDevice}
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус1" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус2" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус3" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус4" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус5" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус6" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус7" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+
         )
-    });
 
-    const elementNameDevice = deviceName.map((item, i) => {
-        return (
-            <ListChannelSpeed key={i} {...item} />
-        )
-    });
-
-    const elementInterfaceConnection = interfaceListConnection.map((item, i) => {
-        return (
-            <ListChannelSpeed key={i} {...item} />
-        )
-    });
-
-
-    return (
-        <li className="list-group-item d-flex justify-content-between">
-            <div className="block-configuration">
-                <table className="table-settring">
-                    <thead>
-                        <tr className="table-setting-name"><td>Ch<strong className="table-setting-number">{numberChannel}</strong></td></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <input type="text" list="comboBox-1" id="cb1" className="setting-select-input"
-                                    autoComplete="off" placeholder="Тип" />
-                                <datalist id="comboBox-1">
-                                    {elementInterfaceConnection}
-                                </datalist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" list="comboBox-2" id="cb2" className="setting-select-input"
-                                    autoComplete="off" placeholder="Скорость" />
-                                <datalist id="comboBox-2">
-                                    {elementSpeed}
-                                </datalist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" list="comboBox-3" id="cb3" className="setting-select-input setting-select-datalist"
-                                    autoComplete="off" placeholder="Имя" />
-                                <datalist id="comboBox-3">
-                                    {elementNameDevice}
-                                </datalist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус1" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус2" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус3" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус4" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус5" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус6" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" className="setting-select-input text-empty-checker" placeholder="Статус7" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </li>
-
-    )
+    }
 }
 
-
-
-export default itemChannel;
+export default ItemChannel;
