@@ -27,13 +27,13 @@ class ItemChannel extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     render() {
-        const { numberChannel } = this.props;
+        const { numberChannel, valueTest } = this.props;
+        console.log(valueTest);
 
-
+        
         const elementSpeed = speedList.map((item, i) => {
             return (
                 <ListChannelSpeed key={i} {...item} />
@@ -134,7 +134,6 @@ class ItemChannel extends Component {
             </li>
 
         )
-
     }
 }
 

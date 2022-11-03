@@ -1,53 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Farsan&family=Racing+Sans+One&family=Space+Mono:wght@700&display=swap');
-div.Header {
-    box-sizing: border-box;
-    height: auto;
-    margin: 0;
+
+html, body {
     padding: 0;
-    background-color: #24252A;
+    margin: 0;
 }
 
-li, a, button {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #edf0f1;
-    text-decoration: none; 
-}
-
-header {
+.main {
     display: flex;
-    justify-content: space-between;
+    box-sizing: border-box;
+    /* margin: 0px; */
+    background-color: #24252A;
+    /* justify-content: space-between; */
     align-items: center;
-    padding: 5px 1%;
-}
 
-p {
-    margin: 5px;
-}
+    >.logo {
+        margin:0px;
+        color: #fff;
+        letter-spacing: 8px;
+        font-size: 30px;
+        cursor: pointer;
+        padding-left: 20px;
+    }
 
-.logo {
-    cursor: pointer;
-    color: #edf0f1;
-    //background-color:aqua;
-    letter-spacing: 8px;
-    font-size: 30px;
-}
+    nav {
+        position: relative;
+        /* background-color: blue; */
+        width: 100%;
+        text-align: center;
+        
+    }
 
-.nav_links {
-    list-style: none;
-}
+    .nav {
+        display: inline;
+        padding: 10px;
+    }
 
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-.nav_links li a {
-    transition: all 0.3s ease 0s;
-}
-
-.nav_links li a:hover {
-    color:#0088a9;
+    .text-inline {
+        display: inline-block;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 20px; 
+        cursor: pointer;
+    }
+    .login {
+        width: 300px;
+        
+    }
+    
 }
 
 button {
@@ -55,10 +54,10 @@ button {
     background-color: rgba(0,136,169,1);
     border-radius: 50px;
     cursor: pointer;
-    border: 0px;
     transition: all 0.3s ease 0s;
+
+    &:hover {
+        background-color: rgba(0,136,169,0.8);
+    }
 }
 
-button:hover {
-    background-color: rgba(0,136,169,0.6);
-}

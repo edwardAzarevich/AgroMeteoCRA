@@ -16,6 +16,21 @@ const nameChannel = [
     { numberChannel: 10 },
 ];
 
+const valueTest = [
+    {
+        ch_number: 1,
+        dev: "sf-03",
+        phy: "RS232",
+        baudrate: 9600
+    },
+    {
+        ch_number: 2,
+        dev: "pp",
+        phy: "RS333",
+        baudrate: 19200
+    }
+];
+
 
 // need code review
 class SettingChannel extends Component {
@@ -61,7 +76,6 @@ class SettingChannel extends Component {
             if (sizeParamsElementList === 3) {
                 paramsElementList[`${arrayForObjectList[0]}`] = numbChannel[nubmerChannel].textContent;
                 arrayForObject.push(paramsElementList);
-                //console.log(arrayForObject);
             }
             nubmerChannel++;
         });
@@ -72,7 +86,8 @@ class SettingChannel extends Component {
     render() {
         const listChannelMap = nameChannel.map((item, i) => {
             return (
-                <ItemSelectDevice key={i} {...item} />
+                // test valueTest !!!!
+                <ItemSelectDevice valueTest={valueTest[0]} key={i} {...item} />
             )
         });
 
