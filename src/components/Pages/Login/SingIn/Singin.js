@@ -8,9 +8,9 @@ class Singin extends React.Component {
         return (
             <div className="popup-main popup-hidden">
                 <div className="popup">
-                    <div className="close-btn">&times;</div>
+                    <div className="close-btn"><a href='/'>&times;</a></div>
                     <div className="form">
-                        <h2>Log in</h2>
+                        <h2>Sing in</h2>
                         <div className="form-element">
                             <label htmlFor="username">Username</label>
                             <input className="input-username-password" type="text" id="username" placeholder="Enter Username" />
@@ -27,7 +27,7 @@ class Singin extends React.Component {
                             <button className="button-singIn">Sing in</button>
                         </div>
                         <div className="form-element">
-                            <a href="#">Registration accaunt</a>
+                            <a href="/Singup">Registration accaunt</a>
                         </div>
                     </div>
                 </div>
