@@ -5,6 +5,7 @@ import SideBar from '../SideBar/sideBar';
 import { Component } from 'react';
 import SettingChannel from '../Setting-channel/Setting-Channel-list/SettingChannel';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Singin from '../Pages/Login/SingIn/Singin';
 
 class App extends Component {
 

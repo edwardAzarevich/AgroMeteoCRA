@@ -31,15 +31,15 @@ class MainHeader extends Component {
     render() {
         return (
             <div className='Header' >
-                <header class="main">
-                    <p class="logo">Peleng</p>
-                    <nav class="nav">
-                        <time class="text-inline">DataTime</time>
-                        <div class="text-inline">About</div>
+                <header className="main">
+                    <p className="logo">Peleng</p>
+                    <nav className="nav">
+                        <time className="text-inline">DataTime</time>
+                        <div className="text-inline">About</div>
                     </nav>
-                    <div class="login">
-                        <a onClick={this.loginTest} class="text-inline">Sing in</a>
-                        <a class="text-inline">Sing up</a>
+                    <div className="login">
+                        <a href='/singIn' /*onClick={this.loginTest}*/ className="text-inline">Sing in</a>
+                        <a href='/singUp' className="text-inline">Sing up</a>
                     </div>
                 </header>
             </div >

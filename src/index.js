@@ -8,6 +8,7 @@ import Headers from './components/header/header';
 import Device from './components/device/device';
 import SideBar from './components/SideBar/sideBar';
 import SettingChannel from './components/Setting-channel/Setting-Channel-list/SettingChannel';
+import Singin from './components/Pages/Login/SingIn/Singin';
 
 
 
@@ -28,12 +29,14 @@ root.render(
 
     <BrowserRouter>
         <Headers />
-        <App />
+
         {/* <Headers /> */}
         {/* <SideBar /> */}
         {/* <Device /> */}
         {/* <SideBar /> */}
         <Routes>
+            <Route exact path='/Singin' element={<Singin />}></Route>
+            <Route exact path='/main' element={<App />} />
             <Route exact path="/footer" element={<Footer />} />
             {/* <Route exact path='/' element={<SettingChannel />} /> */}
         </Routes>
