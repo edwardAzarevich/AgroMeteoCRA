@@ -1,23 +1,53 @@
 import React from 'react';
-import './Singin.scss';
+import '../style/SingInUp.scss';
 
 class Singin extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    show = (obj) => {
+        obj.classList.add('popup-show');
+        obj.classList.remove('popup-hidden');
+    };
+
+    hidden = (obj) => {
+        obj.classList.add('popup-hidden');
+        obj.classList.remove('popup-show');
+    };
+
+    onClose = () => {
+        const popup = document.querySelector('.popup-singin');
+        console.log(popup);
+        if (popup.classList.contains('popup-show')) {
+            this.hidden(popup);
+        };
+    }
+
+    onOpen = () => {
+        const popup = document.querySelector('.popup-singin');
+        if (popup.classList.contains(this.props.children)) {
+            this.show(popup);
+        };
+    }
 
 
     render() {
+
+        //console.log(this.props);
         return (
-            <div className="popup-main popup-hidden">
+            <div className="popup-main popup-show popup-singin">
                 <div className="popup">
-                    <div className="close-btn"><a href='/'>&times;</a></div>
+                    <div onClick={this.onClose} className="close-btn" >&times;</div>
                     <div className="form">
-                        <h2>Sing in</h2>
+                        <h2>Sing in </h2>
                         <div className="form-element">
                             <label htmlFor="username">Username</label>
-                            <input className="input-username-password" type="text" id="username" placeholder="Enter Username" />
+                            <input className="input-username-password" type="text" id="username-singin" placeholder="Enter Username" />
                         </div>
                         <div className="form-element">
                             <label htmlFor="password">Password</label>
-                            <input className="input-username-password" type="password" id="password" placeholder="Enter Password" />
+                            <input className="input-username-password" type="password" id="password-singin" placeholder="Enter Password" />
                         </div>
                         <div className="form-element">
                             <input type="checkbox" id="remember-me" />
@@ -27,7 +57,7 @@ class Singin extends React.Component {
                             <button className="button-singIn">Sing in</button>
                         </div>
                         <div className="form-element">
-                            <a href="/Singup">Registration accaunt</a>
+                            <a>Sing Up accaunt</a>
                         </div>
                     </div>
                 </div>

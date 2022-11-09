@@ -5,12 +5,12 @@
 }
 
 .popup-show {
-    opacity: 0;
-    visibility: hidden;
-}
-.popup-hidden {
     opacity: 1;
     visibility: visible;
+}
+.popup-hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .popup-main {

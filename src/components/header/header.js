@@ -5,6 +5,27 @@ import axios from 'axios';
 
 class MainHeader extends Component {
 
+    show = (obj) => {
+        obj.classList.add('popup-show');
+        obj.classList.remove('popup-hidden');
+    };
+
+    onOpenSingin = () => {
+        const popup = document.querySelector(`.popup-singin`);
+        console.log(popup);
+        if (popup.classList.contains('popup-hidden')) {
+            this.show(popup);
+        };
+    }
+
+    onOpenSingup = () => {
+        const popup = document.querySelector(`.popup-singup`);
+        console.log(popup);
+        if (popup.classList.contains('popup-hidden')) {
+            this.show(popup);
+        };
+    }
+
     loginTest = () => {
         const reg = {
             Username: 'ddd',
@@ -38,8 +59,8 @@ class MainHeader extends Component {
                         <div className="text-inline">About</div>
                     </nav>
                     <div className="login">
-                        <a href='/singIn' /*onClick={this.loginTest}*/ className="text-inline">Sing in</a>
-                        <a href='/singUp' className="text-inline">Sing up</a>
+                        <a onClick={this.onOpenSingin} className="text-inline">Sing in</a>
+                        <a onClick={this.onOpenSingup} className="text-inline">Sing up</a>
                     </div>
                 </header>
             </div >

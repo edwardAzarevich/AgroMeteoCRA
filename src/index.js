@@ -9,7 +9,7 @@ import Device from './components/device/device';
 import SideBar from './components/SideBar/sideBar';
 import SettingChannel from './components/Setting-channel/Setting-Channel-list/SettingChannel';
 import Singin from './components/Pages/Login/SingIn/Singin';
-import Singup from './components/Pages/Login/Registration/Registration';
+import Singup from './components/Pages/Login/SingUp/Singup';
 import StartPage from './components/StartPage/StartPage';
 
 
@@ -36,8 +36,8 @@ root.render(
         {/* <Device /> */}
         {/* <SideBar /> */}
         <Routes>
-            <Route exact path='/Singin' element={<Singin />}></Route>
-            <Route exact path='/Singup' element={<Singup />}></Route>
+            {/* <Route exact path='/Singin' element={<Singin />}></Route>
+            <Route exact path='/Singup' element={<Singup />}></Route> */}
             <Route exact path='/main' element={<App />} />
             <Route exact path="/footer" element={<Footer />} />
             {/* <Route exact path='/' element={<SettingChannel />} /> */}
