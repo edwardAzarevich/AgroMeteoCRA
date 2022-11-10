@@ -1,3 +1,8 @@
+class info {
+    a = 0;
+}
+
+
 const deviceName = ['СФ-03', 'PTB210', 'БА-1'];
 
 const speedForDevice = ['1200', '9600', '19200'];

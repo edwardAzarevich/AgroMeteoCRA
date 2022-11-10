@@ -62,7 +62,7 @@ class ItemChannel extends Component {
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-1" id="cb1" className="setting-select-input"
+                                    <input type="text" list="comboBox-1"  className="setting-select-input"
                                         autoComplete="off" placeholder="Тип" />
                                     <datalist id="comboBox-1">
                                         {elementInterfaceConnection}
@@ -71,7 +71,7 @@ class ItemChannel extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-2" id="cb2" className="setting-select-input"
+                                    <input type="text" list="comboBox-2"  className="setting-select-input"
                                         autoComplete="off" placeholder="Скорость" />
                                     <datalist id="comboBox-2">
                                         {elementSpeed}
@@ -80,7 +80,7 @@ class ItemChannel extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-3" id="cb3" className="setting-select-input setting-select-datalist"
+                                    <input type="text" list="comboBox-3"  className="setting-select-input setting-select-datalist"
                                         autoComplete="off" placeholder="Имя" />
                                     <datalist id="comboBox-3">
                                         {elementNameDevice}

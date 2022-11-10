@@ -30,7 +30,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <BrowserRouter>
-        <StartPage />
+        <Routes>
+            <Route exact path='/' element={<StartPage />} />
+        </Routes>
         {/* <Headers /> */}
         {/* <SideBar /> */}
         {/* <Device /> */}

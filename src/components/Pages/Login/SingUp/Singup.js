@@ -3,11 +3,6 @@ import '../style/SingInUp.scss';
 
 class Singup extends React.Component {
 
-    show = (obj) => {
-        obj.classList.add('popup-show');
-        obj.classList.remove('popup-hidden');
-    };
-
     hidden = (obj) => {
         obj.classList.add('popup-hidden');
         obj.classList.remove('popup-show');
@@ -15,19 +10,10 @@ class Singup extends React.Component {
 
     onClose = () => {
         const popup = document.querySelector('.popup-singup');
-        console.log(popup);
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
     }
-
-    onOpen = () => {
-        const popup = document.querySelector('.popup-main');
-        if (popup.classList.contains(this.props.children)) {
-            this.show(popup);
-        };
-    }
-
 
     render() {
         return (

@@ -5,24 +5,38 @@ import axios from 'axios';
 
 class MainHeader extends Component {
 
+
     show = (obj) => {
         obj.classList.add('popup-show');
         obj.classList.remove('popup-hidden');
     };
 
+    hidden = (obj) => {
+        obj.classList.add('popup-hidden');
+        obj.classList.remove('popup-show');
+    };
+
     onOpenSingin = () => {
-        const popup = document.querySelector(`.popup-singin`);
-        console.log(popup);
-        if (popup.classList.contains('popup-hidden')) {
-            this.show(popup);
+        const singup = document.querySelector('.popup-singup');
+        const singin = document.querySelector('.popup-singin');
+        if (singup.classList.contains('popup-show')) {
+            this.hidden(singup);
+        }
+
+        if (singin.classList.contains('popup-hidden')) {
+            this.show(singin);
         };
     }
 
     onOpenSingup = () => {
-        const popup = document.querySelector(`.popup-singup`);
-        console.log(popup);
-        if (popup.classList.contains('popup-hidden')) {
-            this.show(popup);
+        const singup = document.querySelector('.popup-singup');
+        const singin = document.querySelector('.popup-singin');
+        if (singin.classList.contains('popup-show')) {
+            this.hidden(singin);
+        }
+
+        if (singup.classList.contains('popup-hidden')) {
+            this.show(singup);
         };
     }
 
@@ -52,7 +66,7 @@ class MainHeader extends Component {
     render() {
         return (
             <div className='Header' >
-                <header className="main">
+                <header id='main-header' className="main">
                     <p className="logo">Peleng</p>
                     <nav className="nav">
                         <time className="text-inline">DataTime</time>

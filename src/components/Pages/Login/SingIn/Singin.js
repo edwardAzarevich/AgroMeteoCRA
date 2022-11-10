@@ -6,11 +6,6 @@ class Singin extends React.Component {
         super(props);
     }
 
-    show = (obj) => {
-        obj.classList.add('popup-show');
-        obj.classList.remove('popup-hidden');
-    };
-
     hidden = (obj) => {
         obj.classList.add('popup-hidden');
         obj.classList.remove('popup-show');
@@ -18,25 +13,16 @@ class Singin extends React.Component {
 
     onClose = () => {
         const popup = document.querySelector('.popup-singin');
-        console.log(popup);
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
     }
 
-    onOpen = () => {
-        const popup = document.querySelector('.popup-singin');
-        if (popup.classList.contains(this.props.children)) {
-            this.show(popup);
-        };
-    }
-
-
     render() {
 
         //console.log(this.props);
         return (
-            <div className="popup-main popup-show popup-singin">
+            <div className="popup-main popup-hidden popup-singin">
                 <div className="popup">
                     <div onClick={this.onClose} className="close-btn" >&times;</div>
                     <div className="form">

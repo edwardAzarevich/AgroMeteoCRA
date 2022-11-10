@@ -13,7 +13,7 @@ class StartPage extends Component {
             <div>
                 <Header />
                 <div className='singin-vision'>
-                    <Singin className='singin-vision' >{nameClass}</Singin>
+                    <Singin className='singin-vision' ></Singin>
                     <Singup className='singin-vision' ></Singup>
                 </div>
             </div>
