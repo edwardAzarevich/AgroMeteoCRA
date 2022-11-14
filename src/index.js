@@ -11,6 +11,7 @@ import SettingChannel from './components/Setting-channel/Setting-Channel-list/Se
 import Singin from './components/Pages/Login/SingIn/Singin';
 import Singup from './components/Pages/Login/SingUp/Singup';
 import StartPage from './components/StartPage/StartPage';
+import axios from 'axios';
 
 
 
@@ -24,28 +25,40 @@ const Footer = () => (
 //     </BrowserRouter>, document.getElementById('root')
 // );
 
+let configJSON;
+const req = new Promise(function (resolve, reject) {
+    axios.get('http://localhost:3000/block')
+        .then(data => {
+            configJSON = JSON.parse(JSON.stringify(data.data));
+            //console.log(configJSON);
+            resolve();
+        });
+});
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+req.then(() => {
+    //console.log(configJSON);
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
 
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<StartPage />} />
-        </Routes>
-        {/* <Headers /> */}
-        {/* <SideBar /> */}
-        {/* <Device /> */}
-        {/* <SideBar /> */}
-        <Routes>
-            {/* <Route exact path='/Singin' element={<Singin />}></Route>
+        <BrowserRouter>
+            <Routes>
+                <Route exact path='/' element={<App configJSON={configJSON} />} />
+            </Routes>
+            {/* <Headers /> */}
+            {/* <SideBar /> */}
+            {/* <Device /> */}
+            {/* <SideBar /> */}
+            <Routes>
+                {/* <Route exact path='/Singin' element={<Singin />}></Route>
             <Route exact path='/Singup' element={<Singup />}></Route> */}
-            <Route exact path='/main' element={<App />} />
-            <Route exact path="/footer" element={<Footer />} />
-            {/* <Route exact path='/' element={<SettingChannel />} /> */}
-        </Routes>
-    </BrowserRouter>
-);
+                <Route exact path='/main' element={<StartPage />} />
+                <Route exact path="/footer" element={<Footer />} />
+                {/* <Route exact path='/' element={<SettingChannel />} /> */}
+            </Routes>
+        </BrowserRouter>
+    );
+});
 
 serviceWorker.unregister();
 

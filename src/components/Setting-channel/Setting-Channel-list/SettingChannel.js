@@ -1,6 +1,7 @@
 import './SettingChannel.scss';
 import ItemSelectDevice from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
+import axios from 'axios';
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
 const nameChannel = [
@@ -34,6 +35,10 @@ const valueTest = [
 
 // need code review
 class SettingChannel extends Component {
+    constructor(props) {
+
+        super(props);
+    };
 
     onSaveButton = () => {
         /*const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
@@ -84,11 +89,32 @@ class SettingChannel extends Component {
     };
 
     render() {
+        let f = false;
+        let objectForchannal;
+        const { configJSON } = this.props;
+        console.log(configJSON[0].ch);
+        const arrayConfigJSON = configJSON[0].ch;
         const listChannelMap = nameChannel.map((item, i) => {
-            return (
-                // test valueTest !!!!
-                <ItemSelectDevice valueTest={valueTest[0]} key={i} {...item} />
-            )
+            arrayConfigJSON.forEach(ch => {
+                if (ch.ch_number == item.numberChannel) {
+                    f = true;
+                    //console.log(ch);
+                    objectForchannal = ch;
+                }
+            });
+            if (f) {
+                f = false;
+                return (
+                    // test valueTest !!!!
+                    <ItemSelectDevice configJSON={objectForchannal} valueTest={valueTest[0]} key={i} {...item} />
+                )
+            }
+            else {
+                return (
+                    // test valueTest !!!!
+                    <ItemSelectDevice configJSON={''} valueTest={valueTest[0]} key={i} {...item} />
+                )
+            }
         });
 
         return (

@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem.js';
 
+
 // Временное хранилиже данных
 
 const deviceName = [
@@ -30,10 +31,19 @@ class ItemChannel extends Component {
     }
 
     render() {
-        const { numberChannel, valueTest } = this.props;
-        console.log(valueTest);
+        let saveValueBaudrate = '';
+        let saveValueInterfaceConnection = '';
+        let saveDeviceName = '';
 
-        
+        const { numberChannel, configJSON } = this.props;
+
+        if (configJSON) {
+            saveValueBaudrate = configJSON.baudrate;
+            saveValueInterfaceConnection = configJSON.phy;
+            saveDeviceName = configJSON.dev;
+        };
+
+        console.log(configJSON.dev);
         const elementSpeed = speedList.map((item, i) => {
             return (
                 <ListChannelSpeed key={i} {...item} />
@@ -62,8 +72,8 @@ class ItemChannel extends Component {
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-1"  className="setting-select-input"
-                                        autoComplete="off" placeholder="Тип" />
+                                    <input type="text" list="comboBox-1" className="setting-select-input"
+                                        autoComplete="off" placeholder="Тип" defaultValue={saveValueInterfaceConnection} />
                                     <datalist id="comboBox-1">
                                         {elementInterfaceConnection}
                                     </datalist>
@@ -71,8 +81,8 @@ class ItemChannel extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-2"  className="setting-select-input"
-                                        autoComplete="off" placeholder="Скорость" />
+                                    <input type="text" list="comboBox-2" className="setting-select-input"
+                                        autoComplete="off" placeholder="Скорость" defaultValue={saveValueBaudrate} />
                                     <datalist id="comboBox-2">
                                         {elementSpeed}
                                     </datalist>
@@ -80,8 +90,8 @@ class ItemChannel extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" list="comboBox-3"  className="setting-select-input setting-select-datalist"
-                                        autoComplete="off" placeholder="Имя" />
+                                    <input type="text" list="comboBox-3" className="setting-select-input setting-select-datalist"
+                                        autoComplete="off" placeholder="Имя" defaultValue={saveDeviceName} />
                                     <datalist id="comboBox-3">
                                         {elementNameDevice}
                                     </datalist>
