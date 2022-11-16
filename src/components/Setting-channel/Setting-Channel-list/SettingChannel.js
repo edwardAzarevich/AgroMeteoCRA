@@ -56,15 +56,19 @@ class SettingChannel extends Component {
         //         .then(json => console.log(json))
         // });
 
-        axios.post('https://reqres.in/api/users', {
-            user: 'name',
-            pass: 'word'
-        }).then(() => {
-            console.log('Send true');
-        }).catch(() => {
-            console.log('Send false');
-        });
-        console.log(mainObjectForJSON);
+        // axios.post('https://reqres.in/api/users', {
+        //     user: 'name',
+        //     pass: 'word'
+        // }).then(() => {
+        //     console.log('Send true');
+        // }).catch(() => {
+        //     console.log('Send false');
+        // });
+        // console.log(mainObjectForJSON);
+
+        fetch('http://localhost:5000/secret')
+            .then((res) => res.json())
+            .then((data) => console.log(data));
         return 0;
     }
 
