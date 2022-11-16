@@ -43,7 +43,7 @@ class ItemChannel extends Component {
             saveDeviceName = configJSON.dev;
         };
 
-        console.log(configJSON.dev);
+        //console.log(configJSON.dev);
         const elementSpeed = speedList.map((item, i) => {
             return (
                 <ListChannelSpeed key={i} {...item} />

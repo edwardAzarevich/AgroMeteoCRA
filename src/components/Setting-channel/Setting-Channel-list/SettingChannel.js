@@ -49,6 +49,21 @@ class SettingChannel extends Component {
             ch: this.CreateParamsArray()
         };
 
+        // const req = new Promise(function (resolve, reject) {
+        //     let configJSON;
+        //     fetch('http://localhost:3000')
+        //         .then(response => response.json())
+        //         .then(json => console.log(json))
+        // });
+
+        axios.post('https://reqres.in/api/users', {
+            user: 'name',
+            pass: 'word'
+        }).then(() => {
+            console.log('Send true');
+        }).catch(() => {
+            console.log('Send false');
+        });
         console.log(mainObjectForJSON);
         return 0;
     }
@@ -92,7 +107,7 @@ class SettingChannel extends Component {
         let f = false;
         let objectForchannal;
         const { configJSON } = this.props;
-        console.log(configJSON[0].ch);
+        //console.log(configJSON[0].ch);
         const arrayConfigJSON = configJSON[0].ch;
         const listChannelMap = nameChannel.map((item, i) => {
             arrayConfigJSON.forEach(ch => {
