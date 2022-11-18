@@ -1,7 +1,6 @@
 //import './header.css';
 import Header from '../header/header';
 import { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Singin from '../Pages/Login/SingIn/Singin';
 import Singup from '../Pages/Login/SingUp/Singup';
 

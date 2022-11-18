@@ -3,7 +3,6 @@ import { Component } from 'react';
 
 import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem.js';
 
-
 // Временное хранилиже данных
 
 const deviceName = [
@@ -36,7 +35,6 @@ class ItemChannel extends Component {
         let saveDeviceName = '';
 
         const { numberChannel, configJSON } = this.props;
-
         if (configJSON) {
             saveValueBaudrate = configJSON.baudrate;
             saveValueInterfaceConnection = configJSON.phy;

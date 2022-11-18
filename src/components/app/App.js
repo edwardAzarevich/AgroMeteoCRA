@@ -1,21 +1,16 @@
-//import './header.css';
 import './App.css';
 import Header from '../header/header';
 import SideBar from '../SideBar/sideBar';
 import { Component } from 'react';
 import SettingChannel from '../Setting-channel/Setting-Channel-list/SettingChannel';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Singin from '../Pages/Login/SingIn/Singin';
+import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
         super(props);
     };
-
-
-
     render() {
-        //console.log(this.props.configJSON);
         return (
             <div>
                 <Header />
@@ -41,3 +36,4 @@ class App extends Component {
 }
 
 export default App;
+

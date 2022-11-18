@@ -35,60 +35,36 @@ const valueTest = [
 
 // need code review
 class SettingChannel extends Component {
-    constructor(props) {
-
-        super(props);
-    };
 
     onSaveButton = () => {
-        /*const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
-        const settingListComponent = document.querySelectorAll('.block-configuration');
-        const numbChannel = document.querySelectorAll('.table-setting-number');*/
-        const mainObjectForJSON = {
-            block_number: 0,
-            ch: this.CreateParamsArray()
-        };
-
-        // const req = new Promise(function (resolve, reject) {
-        //     let configJSON;
-        //     fetch('http://localhost:3000')
-        //         .then(response => response.json())
-        //         .then(json => console.log(json))
-        // });
-
-        // axios.post('https://reqres.in/api/users', {
-        //     user: 'name',
-        //     pass: 'word'
-        // }).then(() => {
-        //     console.log('Send true');
-        // }).catch(() => {
-        //     console.log('Send false');
-        // });
-        // console.log(mainObjectForJSON);
-
-        fetch('http://localhost:5000/secret')
-            .then((res) => res.json())
-            .then((data) => console.log(data));
-        return 0;
+        let i = 0;
+        axios({
+            method: 'post',
+            url: 'http://localhost:4000',
+            data: {
+                block_number: `${i}`,
+                ch: this.CreateParamsArray()
+            }
+        });
     }
 
     //Creating an array with channel settings objects
     CreateParamsArray = () => {
 
-        const arrayForObject = new Array();
-        const arrayForObjectList = ['ch_number', 'phy', 'dev', 'baudrate'];
+        const arrayForObject = [];
+        const arrayForObjectList = ['ch_number', 'phy', 'baudrate', 'dev'];
         const settingListComponent = document.querySelectorAll('.block-configuration');
         const numbChannel = document.querySelectorAll('.table-setting-number');
         //
         let nubmerChannel = 0;
         settingListComponent.forEach(elementList => {
-
+            // Not change
             let paramsElementList = new Object();
             let i = 1;
             let itemComponetn = elementList.querySelectorAll('.setting-select-input');
 
             itemComponetn.forEach(elementItem => {
-                if (elementItem.value != "") {
+                if (elementItem.value !== "") {
                     paramsElementList[`${arrayForObjectList[i]}`] = elementItem.value;
                     i++;
                 }
@@ -96,6 +72,7 @@ class SettingChannel extends Component {
             // Determine the number of elements in an object
             const sizeParamsElementList = Object.keys(paramsElementList).length;
 
+            // Sending elements from the page to JSON
             // if at least one cell is empty, nothing will be sent
             if (sizeParamsElementList === 3) {
                 paramsElementList[`${arrayForObjectList[0]}`] = numbChannel[nubmerChannel].textContent;
@@ -103,7 +80,6 @@ class SettingChannel extends Component {
             }
             nubmerChannel++;
         });
-
         return arrayForObject;
     };
 
@@ -111,10 +87,11 @@ class SettingChannel extends Component {
         let f = false;
         let objectForchannal;
         const { configJSON } = this.props;
-        //console.log(configJSON[0].ch);
-        const arrayConfigJSON = configJSON[0].ch;
+        // !!!!!!! review
+        const arrayConfigJSON = configJSON.block[0].ch;
         const listChannelMap = nameChannel.map((item, i) => {
             arrayConfigJSON.forEach(ch => {
+                // Not change "==" on "==="
                 if (ch.ch_number == item.numberChannel) {
                     f = true;
                     //console.log(ch);

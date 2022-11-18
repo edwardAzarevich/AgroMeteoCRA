@@ -14,7 +14,6 @@ import StartPage from './components/StartPage/StartPage';
 import axios from 'axios';
 
 
-
 const Footer = () => (
     <div className="footer">Created with love</div>
 );
@@ -80,39 +79,67 @@ let configJSON = [
         ]
     }
 ];
-// const req = new Promise(function (resolve, reject) {
-//     axios.get('http://localhost:3000/block')
-//         .then(data => {
-//             configJSON = JSON.parse(JSON.stringify(data.data));
-//             console.log(configJSON);
-//             resolve();
-//         });
-// });
+
+// Review !!!!!!
+const req = new Promise(function (resolve, reject) {
+    axios.get('http://localhost:4000/config')
+        .then(data => {
+            configJSON = JSON.parse(JSON.stringify(data.data.config));
+            //console.log(configJSON);
+            resolve();
+        }).catch(() => {
+            console.log('Server not faound 404');
+            configJSON = '';
+            reject();
+        })
+});
 
 
-// req.then(() => {
-//console.log(configJSON);
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+req.then(() => {
+    //console.log(configJSON);
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
 
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<App configJSON={configJSON} />} />
-        </Routes>
-        {/* <Headers /> */}
-        {/* <SideBar /> */}
-        {/* <Device /> */}
-        {/* <SideBar /> */}
-        <Routes>
-            {/* <Route exact path='/Singin' element={<Singin />}></Route>
+        <BrowserRouter>
+            <Routes>
+                <Route exact path='/' element={<App configJSON={configJSON} />} />
+            </Routes>
+            {/* <Headers /> */}
+            {/* <SideBar /> */}
+            {/* <Device /> */}
+            {/* <SideBar /> */}
+            <Routes>
+                {/* <Route exact path='/Singin' element={<Singin />}></Route>
             <Route exact path='/Singup' element={<Singup />}></Route> */}
-            <Route exact path='/main' element={<StartPage />} />
-            <Route exact path="/footer" element={<Footer />} />
-            {/* <Route exact path='/' element={<SettingChannel />} /> */}
-        </Routes>
-    </BrowserRouter>
-);
-// });
+                <Route exact path='/main' element={<StartPage />} />
+                <Route exact path="/footer" element={<Footer />} />
+                {/* <Route exact path='/' element={<SettingChannel />} /> */}
+            </Routes>
+        </BrowserRouter>
+    );
+}).catch(() => {
+    configJSON = '';
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+
+        <BrowserRouter>
+            <Routes>
+                <Route exact path='/' element={<App configJSON={configJSON} />} />
+            </Routes>
+            {/* <Headers /> */}
+            {/* <SideBar /> */}
+            {/* <Device /> */}
+            {/* <SideBar /> */}
+            <Routes>
+                {/* <Route exact path='/Singin' element={<Singin />}></Route>
+            <Route exact path='/Singup' element={<Singup />}></Route> */}
+                <Route exact path='/main' element={<StartPage />} />
+                <Route exact path="/footer" element={<Footer />} />
+                {/* <Route exact path='/' element={<SettingChannel />} /> */}
+            </Routes>
+        </BrowserRouter>
+    );
+});
 
 serviceWorker.unregister();
 

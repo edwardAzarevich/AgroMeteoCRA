@@ -1,4 +1,3 @@
-//import './header.css';
 import './header.scss';
 import { Component } from 'react';
 import axios from 'axios';
@@ -47,11 +46,6 @@ class MainHeader extends Component {
             ConfirmPassword: 'Qq123456!'
         };
 
-        // this.fetch('https://10.0.25.5.5050/api/auth/register')
-        //     .then(data => data.json())
-        //     .then(res => console.log(res)); http://localhost:3000/menu
-
-
         axios.post('https://10.0.25.5:5050/api/auth/register', {
             'Username': 'admins',
             'Password': 'Qq123456!',
@@ -67,7 +61,7 @@ class MainHeader extends Component {
         return (
             <div className='Header' >
                 <header id='main-header' className="main">
-                    <p className="logo">Peleng</p>
+                    <a href='/settingChannel' className="logo">Peleng</a>
                     <nav className="nav">
                         <time className="text-inline">DataTime</time>
                         <div className="text-inline">About</div>
