@@ -17,22 +17,6 @@ const nameChannel = [
     { numberChannel: 10 },
 ];
 
-const valueTest = [
-    {
-        ch_number: 1,
-        dev: "sf-03",
-        phy: "RS232",
-        baudrate: 9600
-    },
-    {
-        ch_number: 2,
-        dev: "pp",
-        phy: "RS333",
-        baudrate: 19200
-    }
-];
-
-
 // need code review
 class SettingChannel extends Component {
 
@@ -40,7 +24,7 @@ class SettingChannel extends Component {
         let i = 0;
         axios({
             method: 'post',
-            url: 'http://localhost:4000',
+            url: 'http://10.0.25.10:4000/',
             data: {
                 block_number: `${i}`,
                 ch: this.CreateParamsArray()
@@ -84,33 +68,32 @@ class SettingChannel extends Component {
     };
 
     render() {
+        let arrayConfigJSON = '';
         let f = false;
-        let objectForchannal;
-        const { configJSON } = this.props;
+        let objectForChannal = '';
+        let { configJSON } = this.props;
+        //console.log(configJSON);
+        //configJSON = '';
         // !!!!!!! review
-        const arrayConfigJSON = configJSON.block[0].ch;
+        if (configJSON !== '')
+            arrayConfigJSON = configJSON.block[0].ch;
         const listChannelMap = nameChannel.map((item, i) => {
-            arrayConfigJSON.forEach(ch => {
-                // Not change "==" on "==="
-                if (ch.ch_number == item.numberChannel) {
-                    f = true;
-                    //console.log(ch);
-                    objectForchannal = ch;
+            //console.log(arrayConfigJSON);
+
+            for (const element of arrayConfigJSON) {
+                if (element.ch_number == item.numberChannel) {
+                    objectForChannal = element;
+                    console.log(objectForChannal);
+                    break;
                 }
-            });
-            if (f) {
-                f = false;
-                return (
-                    // test valueTest !!!!
-                    <ItemSelectDevice configJSON={objectForchannal} valueTest={valueTest[0]} key={i} {...item} />
-                )
+                else {
+                    objectForChannal = '';
+                }
             }
-            else {
-                return (
-                    // test valueTest !!!!
-                    <ItemSelectDevice configJSON={''} valueTest={valueTest[0]} key={i} {...item} />
-                )
-            }
+            return (
+                // test valueTest !!!!
+                <ItemSelectDevice configJSON={objectForChannal} key={i} {...item} />
+            )
         });
 
         return (

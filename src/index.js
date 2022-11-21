@@ -82,7 +82,7 @@ let configJSON = [
 
 // Review !!!!!!
 const req = new Promise(function (resolve, reject) {
-    axios.get('http://localhost:4000/config')
+    axios.get('http://10.0.25.10:4000/config')
         .then(data => {
             configJSON = JSON.parse(JSON.stringify(data.data.config));
             //console.log(configJSON);
@@ -98,6 +98,7 @@ const req = new Promise(function (resolve, reject) {
 req.then(() => {
     //console.log(configJSON);
     const root = ReactDOM.createRoot(document.getElementById('root'));
+
     root.render(
 
         <BrowserRouter>
