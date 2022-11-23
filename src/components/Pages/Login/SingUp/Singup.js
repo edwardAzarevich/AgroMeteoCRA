@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import '../style/SingInUp.scss';
 
@@ -13,6 +14,31 @@ class Singup extends React.Component {
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
+    }
+
+    sendAccauntInfo = () => {
+        const login = document.querySelector('#username-singup'),
+            password = document.querySelector('#password-singup'), // confirm-password-singup
+            confirmPassword = document.querySelector('#confirm-password-singup'),
+            status = document.querySelector('#error-match-password');
+
+        let objForSend;
+        //obj.textContent;
+        // axios.post('https://10.0.25.5:5000', obj)
+        //     .then(res => {
+        //         console.log(obj);
+        //     }).catch(error => {
+        //         console.log(error);
+        //     });
+        if (password.value === confirmPassword.value) {
+            console.log(login.value);
+            console.log(password.value);
+            console.log(confirmPassword.value);
+        } else {
+            status.textContent = "Password not match";
+            console.log('Passwords do not match');
+        }
+        console.log('send accaunt info');
     }
 
     render() {
@@ -35,11 +61,10 @@ class Singup extends React.Component {
                             <input className="input-username-password" type="password" id="confirm-password-singup" placeholder="Confirm Password" />
                         </div>
                         <div className="form-element">
-                            <input type="checkbox" id="remember-me" />
-                            <label htmlFor="remember-me">Remember me</label>
+                            <label id="error-match-password"></label>
                         </div>
                         <div className="form-element">
-                            <button className="button-singIn">Register</button>
+                            <button onClick={this.sendAccauntInfo} className="button-singIn">Register</button>
                         </div>
                         <div className="form-element">
                             <a href="/Singin">Sing In</a>

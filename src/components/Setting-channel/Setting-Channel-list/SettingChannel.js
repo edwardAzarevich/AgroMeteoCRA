@@ -91,7 +91,6 @@ class SettingChannel extends Component {
                 }
             }
             return (
-                // test valueTest !!!!
                 <ItemSelectDevice configJSON={objectForChannal} key={i} {...item} />
             )
         });
