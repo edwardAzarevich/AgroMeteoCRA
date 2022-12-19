@@ -3,6 +3,7 @@ import './index.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './components/app/App';
+import Home from './components/Pages/Home/home';
 import * as serviceWorker from './serviceWorker';
 import Headers from './components/header/header';
 import Device from './components/device/device';
@@ -114,6 +115,7 @@ req.then(() => {
             <Route exact path='/Singup' element={<Singup />}></Route> */}
                 <Route exact path='/main' element={<StartPage />} />
                 <Route exact path="/footer" element={<Footer />} />
+                <Route exact path="/home" element={<Home />} />
                 {/* <Route exact path='/' element={<SettingChannel />} /> */}
             </Routes>
         </BrowserRouter>
