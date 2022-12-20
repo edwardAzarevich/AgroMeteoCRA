@@ -82,7 +82,7 @@ let configJSON = [
 ];
 
 // Review !!!!!!
-const req = new Promise(function (resolve, reject) {
+/*const req = new Promise(function (resolve, reject) {
     axios.get('http://10.0.25.10:4000/config')
         .then(data => {
             configJSON = JSON.parse(JSON.stringify(data.data.config));
@@ -93,56 +93,47 @@ const req = new Promise(function (resolve, reject) {
             configJSON = '';
             reject();
         })
-});
+});*/
 
 
-req.then(() => {
-    //console.log(configJSON);
+/*req.then(() => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
-
     root.render(
-
         <BrowserRouter>
             <Routes>
                 <Route exact path='/' element={<App configJSON={configJSON} />} />
             </Routes>
-            {/* <Headers /> */}
-            {/* <SideBar /> */}
-            {/* <Device /> */}
-            {/* <SideBar /> */}
             <Routes>
-                {/* <Route exact path='/Singin' element={<Singin />}></Route>
-            <Route exact path='/Singup' element={<Singup />}></Route> */}
                 <Route exact path='/main' element={<StartPage />} />
                 <Route exact path="/footer" element={<Footer />} />
                 <Route exact path="/home" element={<Home />} />
-                {/* <Route exact path='/' element={<SettingChannel />} /> */}
             </Routes>
         </BrowserRouter>
     );
-}).catch(() => {
-    configJSON = '';
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
+}).catch(() => {*/
+configJSON = '';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
 
-        <BrowserRouter>
-            <Routes>
-                <Route exact path='/' element={<App configJSON={configJSON} />} />
-            </Routes>
-            {/* <Headers /> */}
-            {/* <SideBar /> */}
-            {/* <Device /> */}
-            {/* <SideBar /> */}
-            <Routes>
-                {/* <Route exact path='/Singin' element={<Singin />}></Route>
+    <BrowserRouter>
+        <Routes>
+            <Route exact path='/setting' element={<App configJSON={configJSON} />} />
+        </Routes>
+        {/* <Headers /> */}
+        {/* <SideBar /> */}
+        {/* <Device /> */}
+        {/* <SideBar /> */}
+        <Routes>
+            {/* <Route exact path='/Singin' element={<Singin />}></Route>
             <Route exact path='/Singup' element={<Singup />}></Route> */}
-                <Route exact path='/main' element={<StartPage />} />
-                <Route exact path="/footer" element={<Footer />} />
-                {/* <Route exact path='/' element={<SettingChannel />} /> */}
-            </Routes>
-        </BrowserRouter>
-    );
-});
+            <Route exact path='/StartPage' element={<StartPage />} />
+            <Route exact path="/footer" element={<Footer />} />
+            <Route exact path="/" element={<Home />} />
+            {/* <Route exact path='/' element={<SettingChannel />} /> */}
+        </Routes>
+    </BrowserRouter>
+);
+//});
 
 serviceWorker.unregister();
 

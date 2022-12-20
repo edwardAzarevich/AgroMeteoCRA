@@ -1,24 +1,23 @@
 import './Sensor.scss';
+import SensorListValue from './sensor-list-value/sensor-list-value';
+//
+import React, { useState } from 'react';
 
-const Sensor = ({ sensor }) => {
-    console.log(sensor.params[0]);
+const Sensor = ({ sensor, value }) => {
+
+    sensor[0].params[0].value = value;
+    console.log(sensor[0].params[0]);
+    const element = sensor[0].params.map((item, i) => {
+        return (
+            <SensorListValue key={i} {...item} />
+        )
+    });
     return (
         <div className="Sensor">
             <img className="icon" alt="icon" /*</div>src={`/static/images/${sensor.name}.png`}*/></img>
-            <h3 className="title">{sensor.name}</h3>
-
-            <div key={2}>
-                <div className="container">
-                    <div>{sensor.params[0].param}</div>
-                    <div>{sensor.params[0].units}</div>
-                </div>
-                <hr />
-                <div className="container">
-                    <div>{sensor.params[1].param}</div>
-                    <div>{sensor.params[1].units}</div>
-                </div>
-                <hr />
-            </div>
+            <h3 className="title">{sensor[0].name}</h3>
+            {/* <SensorListValue value={25} units={'м/с'} /> */}
+            {element}
         </div>
     );
 }

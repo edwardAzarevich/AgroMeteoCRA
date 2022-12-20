@@ -4,6 +4,7 @@ import { Component } from 'react';
 import Singin from '../Pages/Login/SingIn/Singin';
 import Singup from '../Pages/Login/SingUp/Singup';
 import SideBar from '../SideBar/sideBar';
+import './StartPage.scss';
 
 class StartPage extends Component {
 
@@ -17,6 +18,7 @@ class StartPage extends Component {
                     <Singin className='singin-vision' ></Singin>
                     <Singup className='singin-vision' ></Singup>
                 </div>
+                <a href='/'><button className='btnSensor'>Sensors</button></a>
             </div>
         )
     }

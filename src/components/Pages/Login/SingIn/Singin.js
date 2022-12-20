@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/SingInUp.scss';
+import * as req from '../../../services/services';
 
 class Singin extends React.Component {
     constructor(props) {
@@ -16,6 +17,20 @@ class Singin extends React.Component {
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
+    }
+
+    reqs = () => {
+        const login = document.querySelector('#username-singin'),
+            password = document.querySelector('#password-singin');
+
+        const promise = new Promise((resolve, reject) => {
+            req.postLog(login.value, password.value, resolve);
+        });
+
+        promise.then(data => {
+            console.log(data.data.token)
+            this.onClose();
+        });
     }
 
     render() {
@@ -40,7 +55,7 @@ class Singin extends React.Component {
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
                         <div className="form-element">
-                            <button className="button-singIn">Sing in</button>
+                            <button onClick={this.reqs} className="button-singIn">Sing in</button>
                         </div>
                         <div className="form-element">
                             <a>Sing Up accaunt</a>
