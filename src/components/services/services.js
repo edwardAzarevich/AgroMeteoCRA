@@ -4,14 +4,14 @@ function updateSensorData(reslove) {
     const data = new Date();
     const Time = `${data.getFullYear()}-${data.getMonth()}`;
     const bodyForSend = {
-        station: '26653',
-        time: '2022-12-15T19:00:00+0300',
+        station: '12345',
+        time: '2022-12-23T13:04:00+0300',
         types: [
             {
                 name: 'WS',
                 sensors: [],
                 time_spans: {
-                    'all': [
+                    '5M': [
                         'INS'
                     ]
                 }

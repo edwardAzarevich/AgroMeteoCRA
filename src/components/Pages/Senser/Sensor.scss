@@ -6,6 +6,10 @@ $margin-indents: 0 auto 15px auto;
     background-color: #efe;
     border: 1px solid #ccc;
     border-radius: 30px;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    vertical-align: top;
 
     .icon {
         width: 100px;

@@ -3,15 +3,9 @@ import Sensor from '../Senser/sensor';
 import { Component } from 'react';
 import './home.css';
 
-
-
-
-const name = "Датчик скорости и направления ветра";
-const inp = 20;
-const params = [{ "м/с": inp }, { "C": inp }];
 const sensors = [
     {
-        name: 'Датчик скорости и направления ветра',
+        name: 'Датчик скорости и направления ветра (SF-03)',
         params: [
             {
                 value: 15,
@@ -22,7 +16,30 @@ const sensors = [
                 units: 'C'
             }
         ]
+    },
+    {
+        name: 'Датчик Температуры и влажности (HMP-155)',
+        params: [
+            {
+                value: 1,
+                units: '°C'
+            },
+            {
+                value: 60,
+                units: '%'
+            }
+        ]
+    },
+    {
+        name: 'Датчик Давления (PTB210)',
+        params: [
+            {
+                value: 1,
+                units: 'Pa'
+            }
+        ]
     }
+
 ];
 
 
@@ -31,7 +48,7 @@ class Home extends Component {
         super(props);
         this.state = {
             count: 0,
-            value: 9
+            value: 10
         }
     }
     send = () => {
@@ -43,7 +60,9 @@ class Home extends Component {
             //console.log(data.data.types[0].value.all.INS);
             this.setState({ value: data.data.types[0].value.all.INS });
             //sensors[0].params[0].value = this.state.value;
-        });
+        }).catch(error => {
+            
+        })
 
 
 
@@ -57,19 +76,22 @@ class Home extends Component {
 
 
     render() {
+        const element = sensors.map((item, i) => {
+            return (
+                <Sensor sensor={item} value={this.state.value} key={i} />
+            )
+        })
         return (
             <div className="Home" >
-                <h1>Hi Gues</h1>
+                <h1 className='Header'>Hi Gues</h1>
+
                 <div className='area'>
-                    <Sensor sensor={sensors} value={this.state.value} />
-                </div>
-                <div>
-                    {/* <Sensor /> */}
+                    {/* <Sensor sensor={sensors} value={this.state.value} /> */}
+                    {element}
                 </div>
                 <button className='btnHome' onClick={this.send}>Start send massage</button>
                 <a href='/StartPage'><button className='btnHome'>Sing In</button></a>
                 <button onClick={this.testClick}>click {this.state.count}</button>
-                <p>text name { }</p>
             </div>
         )
     }

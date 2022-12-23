@@ -1,8 +1,13 @@
 .Home {
+    /* text-align: center; */
+}
+
+.Header {
     text-align: center;
 }
 
 .area {
+    
     margin: 10px;
 }
 
