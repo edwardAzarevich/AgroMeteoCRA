@@ -17,7 +17,7 @@ function updateSensorData(reslove) {
                 }
             }
         ]
-    };
+    }; 
 
     const obj = JSON.stringify(bodyForSend);
 

@@ -45,9 +45,9 @@ class SettingChannel extends Component {
             // Not change
             let paramsElementList = new Object();
             let i = 1;
-            let itemComponetn = elementList.querySelectorAll('.setting-select-input');
+            let itemComponents = elementList.querySelectorAll('.setting-select-input');
 
-            itemComponetn.forEach(elementItem => {
+            itemComponents.forEach(elementItem => {
                 if (elementItem.value !== "") {
                     paramsElementList[`${arrayForObjectList[i]}`] = elementItem.value;
                     i++;
@@ -97,7 +97,7 @@ class SettingChannel extends Component {
 
         return (
             <div>
-                <h1 className='Main'>Конфигурация каналов</h1>
+                <h1>Конфигурация каналов</h1>
                 <ul className='test' >
                     {listChannelMap}
                 </ul>
