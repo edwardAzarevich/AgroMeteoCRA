@@ -47,13 +47,6 @@ function mainSideBar() {
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" className="menu-item">
-                                                    <span className="menu-item-name">Друзья</span>
-                                                </a>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </details>

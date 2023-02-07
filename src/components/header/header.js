@@ -63,12 +63,12 @@ class MainHeader extends Component {
                 <header id='main-header' className="main">
                     <a href='/settingChannel' className="logo">Peleng</a>
                     <nav className="nav">
-                        <time className="text-inline">DataTime</time>
-                        <div className="text-inline">About</div>
+                        <time className="text-inline">Время</time>
+                        <div className="text-inline">О программе</div>
                     </nav>
                     <div className="login">
-                        <a onClick={this.onOpenSingin} className="text-inline">Sing in</a>
-                        <a onClick={this.onOpenSingup} className="text-inline">Sing up</a>
+                        <a onClick={this.onOpenSingin} className="text-inline">Вход</a>
+                        <a onClick={this.onOpenSingup} className="text-inline">Регистрация</a>
                     </div>
                 </header>
             </div >
