@@ -17,21 +17,25 @@ function updateSensorData(reslove) {
                 }
             }
         ]
-    }; 
+    };
 
     const obj = JSON.stringify(bodyForSend);
 
-    console.log(JSON.stringify(bodyForSend));
+    //console.log(JSON.stringify(bodyForSend));
 
-    axios(
-        {
-            method: 'post',
-            url: 'https://10.0.25.63:8000/api/stations/get/',
-            data: bodyForSend,
-            withCredentials: true
-        }
+    const cookie = document.cookie.split("=")[1];
+    console.log(cookie);
+    axios({
+        method: 'post',
+        url: 'http://10.0.25.63:8000/api/stations/get/',
+        data: bodyForSend,
+        headers: { 'sessionid': cookie },
+        withCredentials: true
+    }
     ).then(res => {
-        console.log(res.data);
+        //console.log(res.data);
+        // console.log(res.headers);
+        // console.log(res.headers);
         reslove(res);
     }).catch(error => {
         console.log(error)
@@ -60,7 +64,7 @@ function postLog(username, password, resolve) {
     console.log(body);
     axios({
         method: 'post',
-        url: 'https://10.0.25.63:8000/api/user/login/',
+        url: 'http://10.0.25.63:8000/api/user/login/',
         data: body,
         headers: {
             'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
@@ -68,9 +72,13 @@ function postLog(username, password, resolve) {
         withCredentials: true
     })
         .then(res => {
-            resolve(res)
-        }).then(res =>
-            console.log('oke')
+            resolve(res);
+            document.cookie = `sessionid=${res.headers['sessionid']}`;
+            console.log(res.headers['sessionid']);
+            console.log(document.cookie);
+        }).then(res => {
+            console.log('oke');
+        }
         ).catch(error => {
             console.log(error)
         });
