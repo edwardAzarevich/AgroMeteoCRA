@@ -93,7 +93,7 @@ class Home extends Component {
                     {element}
                 </div>
                 <button className='btnHome' onClick={this.send}>Start send massage</button>
-                <a href='/StartPage'><button className='btnHome'>Sing In</button></a>
+                <a href='/StartPage'><button className='btnHome'>Sign In</button></a>
                 <button onClick={this.testClick}>click {this.state.count}</button>
             </div>
         )

@@ -28,7 +28,6 @@ const Sensor = ({ sensor, value, valueobj }) => {
     });
     return (
         <div className="Sensor" >
-            <img className="icon" alt="icon" /*</div>src={`/static/images/${sensor.name}.png`}*/></img>
             <h3 className="title">{sensor.name}</h3>
             {sensors}
         </div >

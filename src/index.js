@@ -10,8 +10,8 @@ import Headers from './components/header/header';
 import Device from './components/device/device';
 import SideBar from './components/SideBar/sideBar';
 import SettingChannel from './components/Setting-channel/Setting-Channel-list/SettingChannel';
-import Singin from './components/Pages/Login/SingIn/Singin';
-import Singup from './components/Pages/Login/SingUp/Singup';
+import signin from './components/Pages/Login/SignIn/Signin';
+import signup from './components/Pages/Login/SignUp/Signup';
 import StartPage from './components/StartPage/StartPage';
 import axios from 'axios';
 
@@ -125,8 +125,8 @@ root.render(
         {/* <Device /> */}
         {/* <SideBar /> */}
         <Routes>
-            {/* <Route exact path='/Singin' element={<Singin />}></Route>
-            <Route exact path='/Singup' element={<Singup />}></Route> */}
+            {/* <Route exact path='/signin' element={<signin />}></Route>
+            <Route exact path='/signup' element={<signup />}></Route> */}
             <Route exact path='/StartPage' element={<StartPage />} />
             <Route exact path="/footer" element={<Footer />} />
             <Route exact path="/" element={<HomeNew />} />

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-import '../style/SingInUp.scss';
+import '../style/SignInUp.scss';
 
-class Singup extends React.Component {
+class Signup extends React.Component {
 
     hidden = (obj) => {
         obj.classList.add('popup-hidden');
@@ -10,16 +10,16 @@ class Singup extends React.Component {
     };
 
     onClose = () => {
-        const popup = document.querySelector('.popup-singup');
+        const popup = document.querySelector('.popup-signup');
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
     }
 
     sendAccauntInfo = () => {
-        const login = document.querySelector('#username-singup'),
-            password = document.querySelector('#password-singup'), // confirm-password-singup
-            confirmPassword = document.querySelector('#confirm-password-singup'),
+        const login = document.querySelector('#username-signup'),
+            password = document.querySelector('#password-signup'), // confirm-password-signup
+            confirmPassword = document.querySelector('#confirm-password-signup'),
             status = document.querySelector('#error-match-password');
 
         let objForSend;
@@ -43,31 +43,31 @@ class Singup extends React.Component {
 
     render() {
         return (
-            <div className="popup-main popup-hidden popup-singup">
+            <div className="popup-main popup-hidden popup-signup">
                 <div className="popup">
                     <div onClick={this.onClose} className="close-btn">&times;</div>
                     <div className="form">
-                        <h2>Sing Up</h2>
+                        <h2>Sign Up</h2>
                         <div className="form-element">
                             <label htmlFor="username">Username</label>
-                            <input className="input-username-password" type="text" id="username-singup" placeholder="Enter Username" />
+                            <input className="input-username-password" type="text" id="username-signup" placeholder="Enter Username" />
                         </div>
                         <div className="form-element">
                             <label htmlFor="password">Password</label>
-                            <input className="input-username-password" type="password" id="password-singup" placeholder="Enter Password" />
+                            <input className="input-username-password" type="password" id="password-signup" placeholder="Enter Password" />
                         </div>
                         <div className="form-element">
                             <label htmlFor="confirm-password">Confirm password</label>
-                            <input className="input-username-password" type="password" id="confirm-password-singup" placeholder="Confirm Password" />
+                            <input className="input-username-password" type="password" id="confirm-password-signup" placeholder="Confirm Password" />
                         </div>
                         <div className="form-element">
                             <label id="error-match-password"></label>
                         </div>
                         <div className="form-element">
-                            <button onClick={this.sendAccauntInfo} className="button-singIn">Register</button>
+                            <button onClick={this.sendAccauntInfo} className="button-signin">Register</button>
                         </div>
                         <div className="form-element">
-                            <a href="/Singin">Sing In</a>
+                            <a href="/signin">Sign In</a>
                         </div>
                     </div>
                 </div>
@@ -76,4 +76,4 @@ class Singup extends React.Component {
     }
 }
 
-export default Singup;
+export default Signup;

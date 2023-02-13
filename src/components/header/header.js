@@ -15,27 +15,27 @@ class MainHeader extends Component {
         obj.classList.remove('popup-show');
     };
 
-    onOpenSingin = () => {
-        const singup = document.querySelector('.popup-singup');
-        const singin = document.querySelector('.popup-singin');
-        if (singup.classList.contains('popup-show')) {
-            this.hidden(singup);
+    onOpensignin = () => {
+        const signup = document.querySelector('.popup-signup');
+        const signin = document.querySelector('.popup-signin');
+        if (signup.classList.contains('popup-show')) {
+            this.hidden(signup);
         }
 
-        if (singin.classList.contains('popup-hidden')) {
-            this.show(singin);
+        if (signin.classList.contains('popup-hidden')) {
+            this.show(signin);
         };
     }
 
-    onOpenSingup = () => {
-        const singup = document.querySelector('.popup-singup');
-        const singin = document.querySelector('.popup-singin');
-        if (singin.classList.contains('popup-show')) {
-            this.hidden(singin);
+    onOpensignup = () => {
+        const signup = document.querySelector('.popup-signup');
+        const signin = document.querySelector('.popup-signin');
+        if (signin.classList.contains('popup-show')) {
+            this.hidden(signin);
         }
 
-        if (singup.classList.contains('popup-hidden')) {
-            this.show(singup);
+        if (signup.classList.contains('popup-hidden')) {
+            this.show(signup);
         };
     }
 
@@ -67,8 +67,8 @@ class MainHeader extends Component {
                         <div className="text-inline">About</div>
                     </nav>
                     <div className="login">
-                        <a onClick={this.onOpenSingin} className="text-inline">Sing in</a>
-                        <a onClick={this.onOpenSingup} className="text-inline">Sing up</a>
+                        <a onClick={this.onOpensignin} className="text-inline">Sign in</a>
+                        <a onClick={this.onOpensignup} className="text-inline">Sign up</a>
                     </div>
                 </header>
             </div >

@@ -8,7 +8,7 @@ const HomeNew = (count, value) => {
 
     const sensors = [
         {
-            name: 'Датчик скорости и направления ветра (SF-03)',
+            name: 'Параметры платы 6282',
             params: [
                 {
                     nameSensorParam: 'WS',
@@ -134,13 +134,12 @@ const HomeNew = (count, value) => {
 
     return (
         <div className="Home" >
-            <h1 className='Header'>Hi Gues</h1>
-
+            <h1 className='Header'></h1>
             <div className='area'>
                 {element}
             </div>
             <button className='btnHome' onClick={sendRequest}>Start send massage</button>
-            <a href='/StartPage'><button className='btnHome'>Sing In</button></a>
+            <a href='/StartPage'><button className='btnHome'>Sign In</button></a>
         </div>
     )
 
