@@ -15,6 +15,15 @@ function updateSensorData(reslove) {
                         'INS'
                     ]
                 }
+            },
+            {
+                name: 'WD',
+                sensors: [],
+                time_spans: {
+                    '5M': [
+                        'INS'
+                    ]
+                }
             }
         ]
     };
@@ -35,7 +44,7 @@ function updateSensorData(reslove) {
     ).then(res => {
         //console.log(res.data);
         // console.log(res.headers);
-        // console.log(res.headers);
+        console.log(res);
         reslove(res);
     }).catch(error => {
         console.log(error)

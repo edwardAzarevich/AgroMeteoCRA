@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 
 const Sensor = ({ sensor, value }) => {
 
-    sensor.params[0].value = value;
-    console.log(sensor.params[0]);
+    sensor.params[0].value = value[0];
+    sensor.params[1].value = value[1];
     const sensors = sensor.params.map((item, i) => {
         return (
             <SensorListValue key={i} {...item} />
