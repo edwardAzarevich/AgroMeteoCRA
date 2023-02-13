@@ -5,7 +5,7 @@ function updateSensorData(reslove) {
     const Time = `${data.getFullYear()}-${data.getMonth()}`;
     const bodyForSend = {
         station: '12345',
-        time: '2022-12-23T13:04:00+0300',
+        time: '1970-01-01T00:01:00+0300',
         types: [
             {
                 name: 'WS',

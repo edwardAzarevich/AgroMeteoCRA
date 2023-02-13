@@ -6,6 +6,7 @@ export default function sensorList(listValue) {
             <div className="container">
                 <div>{listValue.value}</div>
                 <div>{listValue.units}</div>
+                <div>{listValue.nameSensorParam}</div>
             </div>
             <hr />
         </div>
