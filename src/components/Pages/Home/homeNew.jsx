@@ -33,7 +33,7 @@ const HomeNew = (count, value) => {
                 {
                     nameSensorParam: 'AP',
                     value: 0,
-                    units: 'Pa'
+                    units: 'hPa!!'
                 },
                 {
                     nameSensorParam: 'P',
@@ -51,14 +51,14 @@ const HomeNew = (count, value) => {
                     units: 'mm/h'
                 },
                 {
-                    nameSensorParam: 'PType',
-                    value: 0,
+                    nameSensorParam: 'Ptype',
+                    value: 3,
                     units: 'code'
                 },
                 {
                     nameSensorParam: 'UVR',
                     value: 0,
-                    units: 'm²'
+                    units: 'W/m²'
                 },
                 {
                     nameSensorParam: 'TG',
@@ -73,6 +73,7 @@ const HomeNew = (count, value) => {
                 {
                     nameSensorParam: 'TPH',
                     value: 0,
+                    //nullValue: '//',
                     units: '°C'
                 },
                 {
@@ -108,8 +109,10 @@ const HomeNew = (count, value) => {
 
             let sensorObject = new Object;
             console.log(sensorArrayParams);
+            //console.log('okes');
             sensorArrayParams.forEach(element => {
-                sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
+                if (element.value['5M'].INS)
+                    sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
             });
 
 

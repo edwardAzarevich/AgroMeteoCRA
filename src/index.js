@@ -3,7 +3,6 @@ import './index.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './components/app/App';
-import Home from './components/Pages/Home/home';
 import HomeNew from './components/Pages/Home/homeNew';
 import * as serviceWorker from './serviceWorker';
 import Headers from './components/header/header';

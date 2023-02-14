@@ -29,7 +29,9 @@ const Sensor = ({ sensor, value, valueobj }) => {
     return (
         <div className="Sensor" >
             <h3 className="title">{sensor.name}</h3>
-            {sensors}
+            <div className='main-sensor'>
+                {sensors}
+            </div>
         </div >
     );
 }
