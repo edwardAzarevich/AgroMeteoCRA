@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 function updateSensorData(reslove) {
-    const data = new Date();
-    const Time = `${data.getFullYear()}-${data.getMonth()}`;
     const bodyForSend = {
         station: '26850',
         time: timeNow(),
@@ -156,13 +154,11 @@ function updateSensorData(reslove) {
 
         ]
     };
-
-    const obj = JSON.stringify(bodyForSend);
-
-    //console.log(JSON.stringify(bodyForSend));
-
-    const cookie = document.cookie.split("=")[1];
-    console.log(cookie);
+    // search for the right cookies
+    const nameCookie = 'sessionid',
+        indexCookie = document.cookie.indexOf(nameCookie) + nameCookie.length + 1,
+        userCookie = document.cookie.slice(indexCookie),
+        cookie = userCookie;
     axios({
         method: 'post',
         url: 'http://10.0.25.63:8000/api/stations/get/',

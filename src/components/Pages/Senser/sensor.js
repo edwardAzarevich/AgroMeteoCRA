@@ -27,9 +27,9 @@ const Sensor = ({ sensor, value, valueobj }) => {
         )
     });
     return (
-        <div className="Sensor" >
+        <div className="Board" >
             <h3 className="title">{sensor.name}</h3>
-            <div className='main-sensor'>
+            <div className='main-container'>
                 {sensors}
             </div>
         </div >

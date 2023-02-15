@@ -1,36 +1,50 @@
 $margin-indents: 0 auto 15px auto;
 
-.Sensor {
-    width: 200px;
+.Board {
+    text-align: center;
     padding: 20px;
     background-color: #efe;
     border: 1px solid #ccc;
     border-radius: 30px;
-    display: inline-block;
-    margin: 10px;
-    text-align: center;
-    vertical-align: top;
+    min-width: 250px;
+    margin: 50px 20%;
 
-    .main-sensor{
-        text-align: center;
-    }
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
 
-    .icon {
-        width: 100px;
-        height: 100px;
-        margin: $margin-indents;
-        display: block;
+        .sensor-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 170px;
+            min-width: 150px;
+            margin: 1px 10px 10px 0px;
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 15px;
+
+            header {
+                margin-bottom: 5px;
+            }
+
+            .sensor-params {
+                display: flex;
+                //flex-direction: column;
+                justify-content: center;
+
+                .sensor-value {
+                    margin-right: 5px;
+                    display: inline;
+                }
+            }
+        }
     }
 
     .title {
         width: fit-content;
         margin: $margin-indents;
-    }
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: stretch;
-        margin: 10px;
     }
 }
