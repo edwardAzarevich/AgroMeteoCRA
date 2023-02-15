@@ -167,7 +167,6 @@ function updateSensorData(reslove) {
         withCredentials: true
     }
     ).then(res => {
-        console.log(res.data);
         reslove(res);
     }).catch(error => {
         console.log(error)
@@ -185,20 +184,19 @@ function timeNow() {
             ("0" + m.getUTCHours()).slice(-2) + ":" +
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
+    // for test to ivan server
     return '1970-01-01T00:01:00+0300';
+    //main solution
     return dateString;
 }
 
 function postReg(username, password, resolve) {
-    console.log(username, password);
     axios.post('http://10.0.25.10:5000/auth/registration', {
         "username": username,
         "password": password
     }).then(res => {
         resolve(res)
-    }).then(res =>
-        console.log('oke')
-    ).catch(error => {
+    }).catch(error => {
         console.log(error)
     });
 }
@@ -208,7 +206,6 @@ function postLog(username, password, resolve) {
     const body = new FormData();
     body.append("username", username);
     body.append("password", password);
-    console.log(body);
     axios({
         method: 'post',
         url: 'http://10.0.25.63:8000/api/user/login/',
@@ -221,12 +218,7 @@ function postLog(username, password, resolve) {
         .then(res => {
             resolve(res);
             document.cookie = `sessionid=${res.headers['sessionid']}`;
-            console.log(res.headers['sessionid']);
-            console.log(document.cookie);
-        }).then(res => {
-            console.log('oke');
-        }
-        ).catch(error => {
+        }).catch(error => {
             console.log(error)
         });
 

@@ -1,27 +1,13 @@
 import './Sensor.scss';
-import SensorListValue from './sensor-list-value/sensor-list-value';
-//
-import React, { useState } from 'react';
+import SensorListValue from './sensor-list-value/Sensor-list-value';
 
 const Sensor = ({ sensor, value, valueobj }) => {
 
-    /*sensor.params[0].value = value[0];
-    sensor.params[1].value = value[1];*/
-
-    /*valueobj.forEach(element => {
-        if (element !== '') {
-            sensor.params[`${valueobj}`]
-        }
-    });*/
-
     const nameSensor = sensor.params;
-    console.log(valueobj);
     const sensors = sensor.params.map((item, i) => {
         if (valueobj && valueobj[`${item.nameSensorParam}`]) {
             item.value = valueobj[`${item.nameSensorParam}`];
         }
-
-        //console.log(valueobj['WS']);
         return (
             <SensorListValue key={i} {...item} />
         )
@@ -30,6 +16,7 @@ const Sensor = ({ sensor, value, valueobj }) => {
         <div className="Board" >
             <h3 className="title">{sensor.name}</h3>
             <div className='main-container'>
+                {/* all sensors */}
                 {sensors}
             </div>
         </div >

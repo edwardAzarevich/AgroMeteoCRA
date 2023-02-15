@@ -3,7 +3,7 @@ import './index.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './components/app/App';
-import HomeNew from './components/Pages/Home/homeNew';
+import HomeNew from './components/Pages/MainBoard/MainBoard';
 import * as serviceWorker from './serviceWorker';
 import Headers from './components/header/header';
 import Device from './components/device/device';
@@ -13,11 +13,6 @@ import signin from './components/Pages/Login/SignIn/Signin';
 import signup from './components/Pages/Login/SignUp/Signup';
 import StartPage from './components/StartPage/StartPage';
 import axios from 'axios';
-
-
-const Footer = () => (
-    <div className="footer">Created with love</div>
-);
 
 let configJSON = [
     {
@@ -126,9 +121,7 @@ root.render(
         <Routes>
             {/* <Route exact path='/signin' element={<signin />}></Route>
             <Route exact path='/signup' element={<signup />}></Route> */}
-            <Route exact path='/StartPage' element={<StartPage />} />
-            <Route exact path="/footer" element={<Footer />} />
-            <Route exact path="/" element={<HomeNew />} />
+            <Route exact path="/" element={<StartPage />} />
             {/* <Route exact path='/' element={<SettingChannel />} /> */}
         </Routes>
     </BrowserRouter>

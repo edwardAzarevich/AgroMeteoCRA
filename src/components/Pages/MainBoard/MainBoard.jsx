@@ -1,7 +1,7 @@
 import * as Services from '../../services/services';
-import Sensor from '../Senser/sensor';
-import './home.css';
+import Sensor from '../Senser/Sensor';
 import { useState } from "react";
+import './MainBoard.scss';
 
 
 const HomeNew = (count, value) => {
@@ -120,24 +120,14 @@ const HomeNew = (count, value) => {
         });
 
         promise.then(data => {
-            const listParams = [],
-                sensorArrayParams = data.data.types;
-
+            const sensorArrayParams = data.data.types;
+            // object to send compotent Sensor
             let sensorObject = new Object;
-            console.log(sensorArrayParams);
-            //console.log('okes');
             sensorArrayParams.forEach(element => {
                 if (element.value['5M'].INS)
                     sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
             });
-
-
             setObjValue(sensorObject);
-            //sensorObject[`${data.data.types[0].name}`] = data.data.types[0].value['5M'].INS;
-            console.log(sensorObject);
-            listParams.push(Math.round(data.data.types[0].value['5M'].INS));
-            listParams.push(Math.round(data.data.types[1].value['5M'].INS));
-            setSensorsValue(listParams);
 
         }).catch(error => {
             console.log(error);
@@ -157,8 +147,7 @@ const HomeNew = (count, value) => {
             <div className='area'>
                 {element}
             </div>
-            <button className='btnHome' onClick={sendRequest}>Start send massage</button>
-            <a href='/StartPage'><button className='btnHome'>Sign In</button></a>
+            <button className='button-start-send-message' onClick={sendRequest}>Start send message</button>
         </div>
     )
 
