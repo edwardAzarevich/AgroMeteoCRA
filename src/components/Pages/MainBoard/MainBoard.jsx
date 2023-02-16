@@ -121,7 +121,8 @@ const HomeNew = (count, value) => {
     ];
 
     const [sensorsValue, setSensorsValue] = useState([]),
-        [objValue, setObjValue] = useState();
+        [objValue, setObjValue] = useState(),
+        [buttonText, setButtonText] = useState('Начать прослушивание платы');
 
     const sendRequest = () => {
         const promise = new Promise((resolve, reject) => {
@@ -137,7 +138,7 @@ const HomeNew = (count, value) => {
                 if (element.value['5M'].INS)
                     sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
             });
-            console.log(sensorObject);
+            //console.log(sensorObject);
             setObjValue(sensorObject);
 
         }).catch(error => {
@@ -149,11 +150,12 @@ const HomeNew = (count, value) => {
 
 
     const startFlowSendRequest = () => {
-        console.log(timerForSend);
+        //console.log(timerForSend);
+        setButtonText('Идет прием данных...');
         if (timerForSend !== null) {
             clearInterval(timerForSend);
             timerForSend = null;
-            alert('stop');
+            setButtonText('Начать прослушивание платы');
             return;
         }
         timerForSend = setInterval(() => {
@@ -173,13 +175,13 @@ const HomeNew = (count, value) => {
     return (
         <div className="Home" >
             <h1 className='Header'></h1>
-            
+
             <div className="fixed-container">
                 <div className='area'>
                     {element}
                 </div>
                 <div className='for-button-click'>
-                    <button className='button-start-send-message' onClick={startFlowSendRequest}>Начать прослушивание платы</button>
+                    <button className='button-start-send-message' onClick={startFlowSendRequest}>{buttonText}</button>
                     <button className='button-start-send-message' onClick={sendRequest}>Отправить одно сообщение</button>
                 </div>
             </div>

@@ -64,7 +64,7 @@ class MainHeader extends Component {
                 <header id='main-header' className="main">
                     <a href='/settingChannel' className="logo">Peleng</a>
                     <nav className="nav">
-                        <time className="text-inline time-clock">
+                        <time className="time-clock">
                             <Clock />
                         </time>
                         {/* <div className="text-inline">About</div> */}
