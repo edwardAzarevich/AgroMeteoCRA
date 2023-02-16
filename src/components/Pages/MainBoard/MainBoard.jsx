@@ -135,10 +135,14 @@ const HomeNew = (count, value) => {
             let sensorObject = new Object;
 
             sensorArrayParams.forEach(element => {
-                if (element.value['5M'].INS)
-                    sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
+                if (element.value['5M'].INS || element.value['5M'].INS === 0) {
+                    if (element.name == "Ptype") {
+                        sensorObject[element.name] = String(element.value['5M'].INS).padStart(2, "0");
+                    } else
+                        sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
+                }
             });
-            //console.log(sensorObject);
+            console.log(sensorObject);
             setObjValue(sensorObject);
 
         }).catch(error => {

@@ -114,6 +114,15 @@ function updateSensorData(reslove) {
                 }
             },
             {
+                name: 'PHG',
+                sensors: [],
+                time_spans: {
+                    '5M': [
+                        'INS'
+                    ]
+                }
+            },
+            {
                 name: 'TPH',
                 sensors: [],
                 time_spans: {
