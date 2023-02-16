@@ -4,6 +4,10 @@ import { useState } from "react";
 import './MainBoard.scss';
 
 
+//need review create new component
+let timerForSend = null;
+
+
 const HomeNew = (count, value) => {
 
     const sensors = [
@@ -13,104 +17,103 @@ const HomeNew = (count, value) => {
                 {
                     sensorName: 'Cкорость ветра',
                     nameSensorParam: 'WS',
-                    value: 15,
-                    units: 'м/с'
+                    value: '---',
+                    units: 'm/s'
                 },
                 {
                     sensorName: 'Направление ветра',
                     nameSensorParam: 'WD',
-                    value: 20,
+                    value: '---',
                     units: '°'
                 },
                 {
                     sensorName: 'Температура воздуха',
                     nameSensorParam: 'TA',
-                    value: 0,
+                    value: '---',
                     units: '°C'
                 },
                 {
                     sensorName: 'Влажности воздуха',
                     nameSensorParam: 'RH',
-                    value: 0,
+                    value: '---',
                     units: '%'
                 },
                 {
                     sensorName: 'Атмосферное давление воздуха',
                     nameSensorParam: 'AP',
-                    value: 0,
-                    units: 'hPa!!'
+                    value: '---',
+                    units: 'hPa'
                 },
                 {
                     sensorName: 'Количество осадков',
                     nameSensorParam: 'P',
-                    value: 0,
-                    units: '°'
+                    value: '---',
+                    units: 'mm'
                 },
                 {
                     sensorName: 'Накопленное количество осадков',
                     nameSensorParam: 'PACC',
-                    value: 0,
+                    value: '---',
                     units: 'mm'
                 },
                 {
                     sensorName: 'Интенсивность осадков',
                     nameSensorParam: 'PI',
-                    value: 0,
+                    value: '---',
                     units: 'mm/h'
                 },
                 {
                     sensorName: 'Тип осадков (код WMO)',
                     nameSensorParam: 'Ptype',
-                    value: 3,
+                    value: '---',
                     units: 'code'
                 },
                 {
                     sensorName: 'Фотосинтетическая радиация',
                     nameSensorParam: 'UVR',
-                    value: 0,
+                    value: '---',
                     units: 'W/m²'
                 },
                 {
                     sensorName: 'Температура почвы',
                     nameSensorParam: 'TG',
-                    value: 0,
+                    value: '---',
                     units: '°C'
                 },
                 {
                     sensorName: 'Влажность почвы',
                     nameSensorParam: 'RHG',
-                    value: 0,
+                    value: '---',
                     units: '%'
                 },
                 {
                     sensorName: 'Кислотность почвы',
                     nameSensorParam: 'PHG',
-                    value: 0,
-                    //nullValue: '//',
-                    units: '°C'
+                    value: '---',
+                    units: 'PH'
                 },
                 {
                     sensorName: 'Температура датчика кислотности почвы',
                     nameSensorParam: 'TPH',
-                    value: 0,
+                    value: '---',
                     units: '°C'
                 },
                 {
                     sensorName: 'Температура датчика влажности листа',
                     nameSensorParam: 'TL',
-                    value: 0,
+                    value: '---',
                     units: '°C'
                 },
                 {
                     sensorName: 'Влажность листа',
                     nameSensorParam: 'RHL',
-                    value: 0,
+                    value: '---',
                     units: '%'
                 },
                 {
                     sensorName: 'Заряд батареи',
                     nameSensorParam: 'ZBAT',
-                    value: 0,
+                    value: '---',
                     units: '%'
                 }
             ]
@@ -143,13 +146,21 @@ const HomeNew = (count, value) => {
 
     }
 
-    const startFlowSendRequest = () => {
 
-        let timerForSend = setInterval(() => {
+
+    const startFlowSendRequest = () => {
+        console.log(timerForSend);
+        if (timerForSend !== null) {
+            clearInterval(timerForSend);
+            timerForSend = null;
+            alert('stop');
+            return;
+        }
+        timerForSend = setInterval(() => {
             sendRequest();
         }, 2000);
 
-        setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000);
+        //setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000);
 
     }
 
@@ -162,11 +173,16 @@ const HomeNew = (count, value) => {
     return (
         <div className="Home" >
             <h1 className='Header'></h1>
-            <div className='area'>
-                {element}
+            
+            <div className="fixed-container">
+                <div className='area'>
+                    {element}
+                </div>
+                <div className='for-button-click'>
+                    <button className='button-start-send-message' onClick={startFlowSendRequest}>Начать прослушивание платы</button>
+                    <button className='button-start-send-message' onClick={sendRequest}>Отправить одно сообщение</button>
+                </div>
             </div>
-            <button className='button-start-send-message' onClick={startFlowSendRequest}>Начать прослушивание платы</button>
-            <button className='button-start-send-message' onClick={sendRequest}>Отправить одно сообщение</button>
         </div>
     )
 
