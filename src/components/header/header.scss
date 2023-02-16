@@ -9,9 +9,7 @@ body {
 .main {
     display: flex;
     box-sizing: border-box;
-    /* margin: 0px; */
     background-color: #24252a;
-    /* justify-content: space-between; */
     align-items: center;
 
     > .logo {
@@ -45,6 +43,10 @@ body {
     }
     .login {
         width: 300px;
+    }
+    .time-clock {
+        font-size: 25px;
+        letter-spacing: 3px;
     }
 }
 

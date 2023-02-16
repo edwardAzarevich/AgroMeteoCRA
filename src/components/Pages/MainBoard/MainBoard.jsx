@@ -84,22 +84,28 @@ const HomeNew = (count, value) => {
                 },
                 {
                     sensorName: 'Кислотность почвы',
-                    nameSensorParam: 'TPH',
+                    nameSensorParam: 'PHG',
                     value: 0,
                     //nullValue: '//',
                     units: '°C'
                 },
                 {
                     sensorName: 'Температура датчика кислотности почвы',
-                    nameSensorParam: 'TL',
+                    nameSensorParam: 'TPH',
                     value: 0,
                     units: '°C'
                 },
                 {
                     sensorName: 'Температура датчика влажности листа',
-                    nameSensorParam: 'RHL',
+                    nameSensorParam: 'TL',
                     value: 0,
                     units: '°C'
+                },
+                {
+                    sensorName: 'Влажность листа',
+                    nameSensorParam: 'RHL',
+                    value: 0,
+                    units: '%'
                 },
                 {
                     sensorName: 'Заряд батареи',
@@ -123,15 +129,27 @@ const HomeNew = (count, value) => {
             const sensorArrayParams = data.data.types;
             // object to send compotent Sensor
             let sensorObject = new Object;
+
             sensorArrayParams.forEach(element => {
                 if (element.value['5M'].INS)
                     sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
             });
+            console.log(sensorObject);
             setObjValue(sensorObject);
 
         }).catch(error => {
             console.log(error);
         })
+
+    }
+
+    const startFlowSendRequest = () => {
+
+        let timerForSend = setInterval(() => {
+            sendRequest();
+        }, 2000);
+
+        setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000);
 
     }
 
@@ -147,7 +165,8 @@ const HomeNew = (count, value) => {
             <div className='area'>
                 {element}
             </div>
-            <button className='button-start-send-message' onClick={sendRequest}>Start send message</button>
+            <button className='button-start-send-message' onClick={startFlowSendRequest}>Начать прослушивание платы</button>
+            <button className='button-start-send-message' onClick={sendRequest}>Отправить одно сообщение</button>
         </div>
     )
 
