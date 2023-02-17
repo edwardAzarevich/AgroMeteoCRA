@@ -12,7 +12,7 @@ const HomeNew = (count, value) => {
 
     const sensors = [
         {
-            name: 'Метеопараетры платы №1',
+            name: 'Метеопараметры',
             params: [
                 {
                     sensorName: 'Cкорость ветра',
@@ -63,10 +63,10 @@ const HomeNew = (count, value) => {
                     units: 'mm/h'
                 },
                 {
-                    sensorName: 'Тип осадков (код WMO)',
+                    sensorName: 'Тип осадков',
                     nameSensorParam: 'Ptype',
                     value: '---',
-                    units: 'code'
+                    units: ''
                 },
                 {
                     sensorName: 'Фотосинтетическая радиация',
@@ -122,7 +122,8 @@ const HomeNew = (count, value) => {
 
     const [sensorsValue, setSensorsValue] = useState([]),
         [objValue, setObjValue] = useState(),
-        [buttonText, setButtonText] = useState('Начать прослушивание платы');
+        nameButtonlistening = 'Начать прослушивание',
+        [buttonText, setButtonText] = useState(nameButtonlistening);
 
     const sendRequest = () => {
         const promise = new Promise((resolve, reject) => {
@@ -159,14 +160,14 @@ const HomeNew = (count, value) => {
         if (timerForSend !== null) {
             clearInterval(timerForSend);
             timerForSend = null;
-            setButtonText('Начать прослушивание платы');
+            setButtonText(nameButtonlistening);
             return;
         }
         timerForSend = setInterval(() => {
             sendRequest();
         }, 2000);
 
-        //setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000);
+        //setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000); cadetblue darkcyan darkred
 
     }
 
@@ -186,7 +187,7 @@ const HomeNew = (count, value) => {
                 </div>
                 <div className='for-button-click'>
                     <button className='button-start-send-message' onClick={startFlowSendRequest}>{buttonText}</button>
-                    <button className='button-start-send-message' onClick={sendRequest}>Отправить одно сообщение</button>
+                    <button className='button-start-send-message' onClick={sendRequest}>Отправить запрос</button>
                 </div>
             </div>
         </div>
