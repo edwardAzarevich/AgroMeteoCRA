@@ -28,14 +28,11 @@ class Signin extends React.Component {
         });
 
         promise.then(data => {
-            console.log(data.data.token)
             this.onClose();
         });
     }
 
     render() {
-
-        //console.log(this.props);
         return (
             <div className="popup-main popup-hidden popup-signin">
                 <div className="popup">
@@ -56,9 +53,6 @@ class Signin extends React.Component {
                         </div>
                         <div className="form-element">
                             <button onClick={this.reqs} className="button-signin">Sign in</button>
-                        </div>
-                        <div className="form-element">
-                            <a>Sign Up accaunt</a>
                         </div>
                     </div>
                 </div>

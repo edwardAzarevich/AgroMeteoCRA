@@ -16,7 +16,7 @@ class Signup extends React.Component {
         };
     }
 
-    sendAccauntInfo = () => {
+    sendAccountInfo = () => {
         const login = document.querySelector('#username-signup'),
             password = document.querySelector('#password-signup'), // confirm-password-signup
             confirmPassword = document.querySelector('#confirm-password-signup'),
@@ -38,7 +38,7 @@ class Signup extends React.Component {
             status.textContent = "Password not match";
             console.log('Passwords do not match');
         }
-        console.log('send accaunt info');
+        console.log('send account info');
     }
 
     render() {
@@ -64,10 +64,7 @@ class Signup extends React.Component {
                             <label id="error-match-password"></label>
                         </div>
                         <div className="form-element">
-                            <button onClick={this.sendAccauntInfo} className="button-signin">Register</button>
-                        </div>
-                        <div className="form-element">
-                            <a href="/signin">Sign In</a>
+                            <button onClick={this.sendAccountInfo} className="button-signin">Register</button>
                         </div>
                     </div>
                 </div>

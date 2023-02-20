@@ -1,176 +1,25 @@
 import axios from 'axios';
+import * as addInfo from './addInfo';
 
 function updateSensorData(reslove) {
-    const bodyForSend = {
-        station: '26850',
-        time: timeNow(),
-        types: [
-            {
-                name: 'WS',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'WD',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'TA',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'RH',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'AP',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'P',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'PACC',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'PI',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'Ptype',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'UVR',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'TG',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'RHG',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'PHG',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'TPH',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'TL',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'RHL',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
-            {
-                name: 'ZBAT',
-                sensors: [],
-                time_spans: {
-                    '5M': [
-                        'INS'
-                    ]
-                }
-            },
 
+    const nameSensor = ['WS', 'WD', 'TA', 'RH', 'AP', 'P', 'PACC', 'PI', 'Ptype', 'UVR', 'TG', 'RHG', 'PHG', 'TPH', 'TL', 'RHL', 'ZBAT'],
+        arrayfortypes = addInfo.addInfoToUpdateSensorData(nameSensor),
+        bodyForSend = {
+            station: '26850',
+            time: timeNow(),
+            types: arrayfortypes
+        };
 
-
-        ]
-    };
     // search for the right cookies
     const nameCookie = 'sessionid',
         indexCookie = document.cookie.indexOf(nameCookie) + nameCookie.length + 1,
         userCookie = document.cookie.slice(indexCookie),
         cookie = userCookie;
+        
     axios({
         method: 'post',
-        url: 'http://localhost:4001/api/stations/get/',
+        url: 'http://10.0.25.63:8000/api/stations/get/',
         data: bodyForSend,
         headers: { 'sessionid': cookie },
         withCredentials: true
@@ -194,7 +43,7 @@ function timeNow() {
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
     // for test to ivan server
-    //return '1970-01-01T00:01:00+0300';
+    return '1970-01-01T00:01:00+0300';
     //main solution
     return dateString;
 }
@@ -217,7 +66,7 @@ function postLog(username, password, resolve) {
     body.append("password", password);
     axios({
         method: 'post',
-        url: 'http://localhost:4001/api/user/login/',
+        url: 'http://10.0.25.63:8000/api/user/login/',
         data: body,
         headers: {
             'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
