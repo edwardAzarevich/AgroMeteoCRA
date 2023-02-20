@@ -41,21 +41,12 @@ class MainHeader extends Component {
     }
 
     loginTest = () => {
-        const reg = {
-            Username: 'ddd',
-            Password: 'Qq123456!',
-            ConfirmPassword: 'Qq123456!'
-        };
-
         axios.post('https://10.0.25.5:5050/api/auth/register', {
             'Username': 'admins',
             'Password': 'Qq123456!',
             'ConfirmPassword': 'Qq123456!'
         }).then((res) => console.log(res))
             .catch(error => console.log(error));
-
-
-        console.log(JSON.stringify(reg));
     }
 
     render() {
@@ -70,8 +61,8 @@ class MainHeader extends Component {
                         {/* <div className="text-inline">About</div> */}
                     </nav>
                     <div className="login">
+                        <a onClick={this.onOpensignup} className="text-inline popup-hidden">Sign up</a>
                         <a onClick={this.onOpensignin} className="text-inline">Sign in</a>
-                        <a onClick={this.onOpensignup} className="text-inline">Sign up</a>
                     </div>
                 </header>
             </div >

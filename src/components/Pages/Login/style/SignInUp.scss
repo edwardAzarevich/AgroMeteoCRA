@@ -78,6 +78,10 @@
                     color: #1f79ca;
                     text-decoration: none;
                     font-weight: 600;
+                    &:hover {
+                        color: blue($color: #000000);
+                        cursor: pointer;
+                    }
                 }
                 #error-match-password {
                     color: red;

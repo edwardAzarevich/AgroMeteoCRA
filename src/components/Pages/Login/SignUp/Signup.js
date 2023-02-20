@@ -16,6 +16,19 @@ class Signup extends React.Component {
         };
     }
 
+    show = (obj) => {
+        obj.classList.remove('popup-hidden');
+        obj.classList.add('popup-show');
+    };
+
+    onSignIn = () => {
+        this.onClose();
+        const SignIn = document.querySelector('.popup-signin');
+        if (SignIn.classList.contains('popup-hidden')) {
+            this.show(SignIn);
+        };
+    }
+
     sendAccountInfo = () => {
         const login = document.querySelector('#username-signup'),
             password = document.querySelector('#password-signup'), // confirm-password-signup
@@ -65,6 +78,11 @@ class Signup extends React.Component {
                         </div>
                         <div className="form-element">
                             <button onClick={this.sendAccountInfo} className="button-signin">Register</button>
+                        </div>
+                        <div className="form-element">
+                            <div onClick={this.onSignIn}>
+                                <a>Sign In</a>
+                            </div>
                         </div>
                     </div>
                 </div>

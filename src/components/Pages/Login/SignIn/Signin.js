@@ -12,12 +12,26 @@ class Signin extends React.Component {
         obj.classList.remove('popup-show');
     };
 
+    show = (obj) => {
+        obj.classList.remove('popup-hidden');
+        obj.classList.add('popup-show');
+    };
+
     onClose = () => {
         const popup = document.querySelector('.popup-signin');
         if (popup.classList.contains('popup-show')) {
             this.hidden(popup);
         };
     }
+
+    onSignUp = () => {
+        this.onClose();
+        const SignUp = document.querySelector('.popup-signup');
+        if (SignUp.classList.contains('popup-hidden')) {
+            this.show(SignUp);
+        };
+    }
+
 
     reqs = () => {
         const login = document.querySelector('#username-signin'),
@@ -53,6 +67,11 @@ class Signin extends React.Component {
                         </div>
                         <div className="form-element">
                             <button onClick={this.reqs} className="button-signin">Sign in</button>
+                        </div>
+                        <div className="form-element">
+                            <div onClick={this.onSignUp}>
+                                <a>Sign Up account</a>
+                            </div>
                         </div>
                     </div>
                 </div>

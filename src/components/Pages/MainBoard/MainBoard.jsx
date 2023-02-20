@@ -114,7 +114,7 @@ const HomeNew = (count, value) => {
                     sensorName: 'Заряд батареи',
                     nameSensorParam: 'ZBAT',
                     value: '---',
-                    units: '%'
+                    units: 'V'
                 }
             ]
         }
@@ -123,7 +123,8 @@ const HomeNew = (count, value) => {
     const [sensorsValue, setSensorsValue] = useState([]),
         [objValue, setObjValue] = useState(),
         nameButtonlistening = 'Начать прослушивание',
-        [buttonText, setButtonText] = useState(nameButtonlistening);
+        [buttonText, setButtonText] = useState(nameButtonlistening),
+        [timeArrival, setdataArrivalTime] = useState(new Date());
 
     const sendRequest = () => {
         const promise = new Promise((resolve, reject) => {
@@ -143,7 +144,7 @@ const HomeNew = (count, value) => {
                         sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
                 }
             });
-            console.log(sensorObject);
+            setdataArrivalTime(Date());
             setObjValue(sensorObject);
 
         }).catch(error => {
@@ -155,7 +156,6 @@ const HomeNew = (count, value) => {
 
 
     const startFlowSendRequest = () => {
-        //console.log(timerForSend);
         setButtonText('Идет прием данных...');
         if (timerForSend !== null) {
             clearInterval(timerForSend);
@@ -165,15 +165,12 @@ const HomeNew = (count, value) => {
         }
         timerForSend = setInterval(() => {
             sendRequest();
-        }, 2000);
-
-        //setTimeout(() => { clearInterval(timerForSend); alert('stop'); }, 30000); cadetblue darkcyan darkred
-
+        }, 10000);
     }
 
     const element = sensors.map((item, i) => {
         return (
-            <Sensor sensor={item} value={sensorsValue} valueobj={objValue} key={i} />
+            <Sensor sensor={item} value={sensorsValue} valueobj={objValue} key={i} timeArrival={timeArrival} />
         )
     });
 

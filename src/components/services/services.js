@@ -16,7 +16,7 @@ function updateSensorData(reslove) {
         indexCookie = document.cookie.indexOf(nameCookie) + nameCookie.length + 1,
         userCookie = document.cookie.slice(indexCookie),
         cookie = userCookie;
-        
+
     axios({
         method: 'post',
         url: 'http://10.0.25.63:8000/api/stations/get/',
@@ -43,13 +43,13 @@ function timeNow() {
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
     // for test to ivan server
-    return '1970-01-01T00:01:00+0300';
+    //return '1970-01-01T00:01:00+0300';
     //main solution
     return dateString;
 }
-
+// for ivan server 10.0.25.63:5000
 function postReg(username, password, resolve) {
-    axios.post('http://10.0.25.10:5000/auth/registration', {
+    axios.post('http://10.0.25.10:8000/auth/registration', {
         "username": username,
         "password": password
     }).then(res => {
