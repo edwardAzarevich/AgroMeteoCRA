@@ -43,7 +43,7 @@ function timeNow() {
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
     // for test to ivan server
-    //return '1970-01-01T00:01:00+0300';
+    return '1970-01-01T00:01:00+0300';
     //main solution
     return dateString;
 }

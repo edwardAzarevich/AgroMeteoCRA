@@ -11,7 +11,7 @@ const objectForarray = (name) => {
         name: name,
         sensors: [],
         time_spans: {
-            '5M': [
+            '2M': [
                 'INS'
             ]
         }

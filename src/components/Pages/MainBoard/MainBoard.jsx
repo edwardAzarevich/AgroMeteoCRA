@@ -124,29 +124,30 @@ const HomeNew = (count, value) => {
         [objValue, setObjValue] = useState(),
         nameButtonlistening = 'Начать прослушивание',
         [buttonText, setButtonText] = useState(nameButtonlistening),
-        [timeArrival, setdataArrivalTime] = useState(new Date());
+        [timeArrival, setdataArrivalTime] = useState('---');
 
     const sendRequest = () => {
         const promise = new Promise((resolve, reject) => {
             Services.updateSensorData(resolve);
         });
 
-        promise.then(data => {
-            const sensorArrayParams = data.data.types;
+        promise.then(obj => {
+            const sensorArrayParams = obj.data.types,
+                timeUpdate = obj.data.time.slice(11);
+            console.log(timeUpdate);
             // object to send compotent Sensor
             let sensorObject = new Object;
 
             sensorArrayParams.forEach(element => {
-                if (element.value['5M'].INS || element.value['5M'].INS === 0) {
+                if (element.value['2M'].INS || element.value['2M'].INS === 0) {
                     if (element.name == "Ptype") {
-                        sensorObject[element.name] = String(element.value['5M'].INS).padStart(2, "0");
+                        sensorObject[element.name] = String(element.value['2M'].INS).padStart(2, "0");
                     } else
-                        sensorObject[element.name] = element.value['5M'].INS.toFixed(2);
+                        sensorObject[element.name] = element.value['2M'].INS.toFixed(2);
                 }
             });
-            setdataArrivalTime(Date());
             setObjValue(sensorObject);
-
+            setdataArrivalTime(timeUpdate);
         }).catch(error => {
             console.log(error);
         })

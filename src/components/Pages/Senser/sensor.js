@@ -2,7 +2,7 @@ import './Sensor.scss';
 import SensorListValue from './sensor-list-value/Sensor-list-value';
 
 
-const Sensor = ({ sensor, valueobj }) => {
+const Sensor = ({ sensor, valueobj, timeArrival }) => {
     const start = Date();
     let updateTimeThenRec = '---';
     const sensors = sensor.params.map((item, i) => {
@@ -16,7 +16,7 @@ const Sensor = ({ sensor, valueobj }) => {
     });
     return (
         <div className="Board" >
-            <h3 className="title">{sensor.name} {updateTimeThenRec}</h3>
+            <h3 className="title">{sensor.name} {timeArrival}</h3>
             <div className='main-container'>
                 {/* all sensors */}
                 {sensors}
