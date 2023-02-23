@@ -19,7 +19,7 @@ function updateSensorData(reslove) {
 
     axios({
         method: 'post',
-        url: 'http://10.0.25.63:8000/api/stations/get/',
+        url: 'http://localhost:4001/api/stations/get/',
         data: bodyForSend,
         headers: { 'sessionid': cookie },
         withCredentials: true
@@ -43,7 +43,7 @@ function timeNow() {
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
     // for test to ivan server
-    return '1970-01-01T00:01:00+0300';
+    //return '1970-01-01T00:01:00+0300';
     //main solution
     return dateString;
 }
@@ -66,7 +66,7 @@ function postLog(username, password, resolve) {
     body.append("password", password);
     axios({
         method: 'post',
-        url: 'http://10.0.25.63:8000/api/user/login/',
+        url: 'http://localhost:4001/api/user/login/',
         data: body,
         headers: {
             'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
