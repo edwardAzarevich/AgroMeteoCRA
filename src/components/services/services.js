@@ -19,7 +19,7 @@ function updateSensorData(reslove) {
 
     axios({
         method: 'post',
-        url: 'http://localhost:4001/api/stations/get/',
+        url: 'http://10.0.25.63:8000/api/stations/get/',
         data: bodyForSend,
         headers: { 'sessionid': cookie },
         withCredentials: true
@@ -27,7 +27,9 @@ function updateSensorData(reslove) {
     ).then(res => {
         reslove(res);
     }).catch(error => {
-        console.log(error)
+        if (error.response.status === 401)
+            alert('Ошибка входа в аккаунт');
+        console.log(error.response)
     });
 }
 
@@ -43,13 +45,13 @@ function timeNow() {
             ("0" + m.getUTCMinutes()).slice(-2) + ":" +
             ("0" + m.getUTCSeconds()).slice(-2) + "+0000";
     // for test to ivan server
-    //return '1970-01-01T00:01:00+0300';
+    return '1970-01-01T00:01:00+0300';
     //main solution
     return dateString;
 }
-// for ivan server 10.0.25.63:5000
+// for ivan server 10.0.25.63:8000
 function postReg(username, password, resolve) {
-    axios.post('http://10.0.25.10:8000/auth/registration', {
+    axios.post('http://10.0.25.63:8000/auth/registration', {
         "username": username,
         "password": password
     }).then(res => {
@@ -66,7 +68,7 @@ function postLog(username, password, resolve) {
     body.append("password", password);
     axios({
         method: 'post',
-        url: 'http://localhost:4001/api/user/login/',
+        url: 'http://10.0.25.63:8000/api/user/login/',
         data: body,
         headers: {
             'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
