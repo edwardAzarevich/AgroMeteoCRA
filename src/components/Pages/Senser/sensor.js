@@ -1,5 +1,5 @@
 import './Sensor.scss';
-import SensorListValue from './sensor-list-value/Sensor-list-value';
+import SensorListValue from './sensor-list-value/sensor-list-value';
 
 
 const Sensor = ({ sensor, valueobj, timeArrival }) => {
