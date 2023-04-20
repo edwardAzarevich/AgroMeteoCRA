@@ -61,12 +61,11 @@ function postReg(username, password, resolve) {
     });
 }
 
-function postLog(username, password, resolve) {
-
+const postLog = async (username, password) => {
     const body = new FormData();
     body.append("username", username);
     body.append("password", password);
-    axios({
+    await axios({
         method: 'post',
         url: 'http://10.0.25.63:8000/api/user/login/',
         data: body,
@@ -76,12 +75,11 @@ function postLog(username, password, resolve) {
         withCredentials: true
     })
         .then(res => {
-            resolve(res);
+            console.log(res);
             document.cookie = `sessionid=${res.headers['sessionid']}`;
         }).catch(error => {
             console.log(error)
         });
-
 }
 
 export { updateSensorData, postReg, postLog };

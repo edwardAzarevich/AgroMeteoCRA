@@ -1,10 +1,20 @@
 import React from 'react';
 import '../style/SignInUp.scss';
+import SignServices from '../../../services/SignServices';
+
 import * as req from '../../../services/services';
+import Spinner from '../../../Spinner/spinner';
 
 class Signin extends React.Component {
     constructor(props) {
         super(props);
+    }
+    state = {
+        loading: false
+    }
+
+    SignInLoaded = (stateLoading) => {
+        this.setState({ loading: stateLoading })
     }
 
     hidden = (obj) => {
@@ -34,19 +44,23 @@ class Signin extends React.Component {
 
 
     reqs = () => {
+        const sere = new SignServices();
+        this.SignInLoaded(true);
+        sere.postLog('rr', 'rr').then(res => {
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
         const login = document.querySelector('#username-signin'),
-            password = document.querySelector('#password-signin');
-
-        const promise = new Promise((resolve, reject) => {
-            req.postLog(login.value, password.value, resolve);
-        });
-
-        promise.then(data => {
-            this.onClose();
-        });
+            password = document.querySelector('#password-signin'),
+            resForCloseSignIn = false;
+        req.postLog(login.value, password.value, resForCloseSignIn)
+            .then(() => this.SignInLoaded(false));
     }
 
     render() {
+        const { loading } = this.state,
+            spinner = loading ? <Spinner /> : null;
         return (
             <div className="popup-main popup-hidden popup-signin">
                 <div className="popup">
@@ -66,7 +80,9 @@ class Signin extends React.Component {
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
                         <div className="form-element">
-                            <button onClick={this.reqs} className="button-signin">Sign in</button>
+                            <button onClick={this.reqs} className="button-signin">
+                                {loading ? spinner : 'Sign in'}
+                            </button>
                         </div>
                         <div className="form-element">
                             <div onClick={this.onSignUp}>
