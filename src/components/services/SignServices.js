@@ -5,7 +5,7 @@ class SignServices {
     axiosPost = async (body) => {
         let res = await axios({
             method: 'post',
-            url: 'http://10.0.25.63:8000/api/user/login/',
+            url: 'http://10.0.25.10:8000/api/user/login/',
             data: body,
             headers: {
                 'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
@@ -13,7 +13,7 @@ class SignServices {
             withCredentials: true
         });
 
-        return await res.json();
+        return await res;
     }
 
     postLog = async (username, password) => {
@@ -21,6 +21,7 @@ class SignServices {
         body.append("username", username);
         body.append("password", password);
         const res = await this.axiosPost(body);
+        document.cookie = `sessionid=${res.headers['sessionid']}`;
         return await res;
     }
 }

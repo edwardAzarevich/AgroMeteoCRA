@@ -44,18 +44,19 @@ class Signin extends React.Component {
 
 
     reqs = () => {
-        const sere = new SignServices();
+        const sere = new SignServices(),
+            login = document.querySelector('#username-signin'),
+            password = document.querySelector('#password-signin');
         this.SignInLoaded(true);
-        sere.postLog('rr', 'rr').then(res => {
-            console.log(res);
-        }).catch(error => {
-            console.log(error);
-        })
-        const login = document.querySelector('#username-signin'),
-            password = document.querySelector('#password-signin'),
-            resForCloseSignIn = false;
-        req.postLog(login.value, password.value, resForCloseSignIn)
-            .then(() => this.SignInLoaded(false));
+        sere.postLog(login.value, password.value)
+            .then(() => {
+                this.SignInLoaded(false);
+                this.onClose();
+            }).catch(error => {
+                console.log(login, password);
+                console.log(error);
+                this.SignInLoaded(false)
+            })
     }
 
     render() {

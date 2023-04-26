@@ -19,7 +19,7 @@ function updateSensorData(reslove) {
 
     axios({
         method: 'post',
-        url: 'http://10.0.25.63:8000/api/stations/get/',
+        url: 'http://10.0.25.10:8000/api/stations/get/',
         data: bodyForSend,
         headers: { 'sessionid': cookie },
         withCredentials: true
@@ -51,7 +51,7 @@ function timeNow() {
 }
 // for ivan server 10.0.25.63:8000
 function postReg(username, password, resolve) {
-    axios.post('http://10.0.25.63:8000/auth/registration', {
+    axios.post('http://10.0.25.10:8000/auth/registration', {
         "username": username,
         "password": password
     }).then(res => {
@@ -61,25 +61,4 @@ function postReg(username, password, resolve) {
     });
 }
 
-const postLog = async (username, password) => {
-    const body = new FormData();
-    body.append("username", username);
-    body.append("password", password);
-    await axios({
-        method: 'post',
-        url: 'http://10.0.25.63:8000/api/user/login/',
-        data: body,
-        headers: {
-            'Content-Type': `multipart/form-data; boundary=${body._boundary}`,
-        },
-        withCredentials: true
-    })
-        .then(res => {
-            console.log(res);
-            document.cookie = `sessionid=${res.headers['sessionid']}`;
-        }).catch(error => {
-            console.log(error)
-        });
-}
-
-export { updateSensorData, postReg, postLog };
+export { updateSensorData, postReg };
