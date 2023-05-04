@@ -1,7 +1,8 @@
 import './SettingChannel.scss';
-import ItemSelectDevice from '../Setting-Channel-item/SettingChannelItem.js';
+import ItemChannel from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
 import axios from 'axios';
+import { getSettingParams } from '../../services/serviceForSetting';
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
 const nameChannel = [
@@ -19,6 +20,16 @@ const nameChannel = [
 
 // need code review
 class SettingChannel extends Component {
+    constructor(props) {
+        super(props)
+    }
+    state = {
+        settingParams: {},
+        error: false,
+        loading: true
+    }
+
+
 
     onSaveButton = () => {
         let i = 0;
@@ -30,6 +41,21 @@ class SettingChannel extends Component {
                 ch: this.CreateParamsArray()
             }
         });
+    }
+
+    onReqForGetSaveParams = () => {
+        getSettingParams()
+            .then(this.onParamsLeaded)
+            .catch(this.error);
+    }
+    componentDidMount() {
+        this.onReqForGetSaveParams();
+    }
+
+    onParamsLeaded = (params) => {
+        //error pls review
+        //this.state.settingParams = params;
+        this.setState({ settingParams: params, error: true });
     }
 
     //Creating an array with channel settings objects
@@ -69,17 +95,19 @@ class SettingChannel extends Component {
 
     render() {
         let arrayConfigJSON = '';
-        let f = false;
         let objectForChannal = '';
+        let testBlock = this.state.settingParams;
         let { configJSON } = this.props;
-        //console.log(configJSON);
+        configJSON = testBlock ? testBlock : '';
+        const errorMassage = 'Необходимо включить сервер для сохранения данных';
         //configJSON = '';
         // !!!!!!! review
-        if (configJSON !== '')
+        console.log(configJSON);
+        if (configJSON.block) {
+            console.log(configJSON.block);
             arrayConfigJSON = configJSON.block[0].ch;
+        }
         const listChannelMap = nameChannel.map((item, i) => {
-            //console.log(arrayConfigJSON);
-
             for (const element of arrayConfigJSON) {
                 if (element.ch_number == item.numberChannel) {
                     objectForChannal = element;
@@ -91,7 +119,7 @@ class SettingChannel extends Component {
                 }
             }
             return (
-                <ItemSelectDevice configJSON={objectForChannal} key={i} {...item} />
+                <ItemChannel configJSON={objectForChannal} key={i} {...item} />
             )
         });
 

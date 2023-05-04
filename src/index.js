@@ -76,21 +76,6 @@ let configJSON = [
     }
 ];
 
-// Review !!!!!!
-/*const req = new Promise(function (resolve, reject) {
-    axios.get('http://10.0.25.10:4000/config')
-        .then(data => {
-            configJSON = JSON.parse(JSON.stringify(data.data.config));
-            //console.log(configJSON);
-            resolve();
-        }).catch(() => {
-            console.log('Server not faound 404');
-            configJSON = '';
-            reject();
-        })
-});*/
-
-
 /*req.then(() => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
@@ -109,7 +94,6 @@ let configJSON = [
 configJSON = '';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
     <BrowserRouter>
         <Routes>
             <Route exact path='/setting' element={<App configJSON={configJSON} />} />
@@ -119,10 +103,7 @@ root.render(
         {/* <Device /> */}
         {/* <SideBar /> */}
         <Routes>
-            {/* <Route exact path='/signin' element={<signin />}></Route>
-            <Route exact path='/signup' element={<signup />}></Route> */}
             <Route exact path="/" element={<StartPage />} />
-            {/* <Route exact path='/' element={<SettingChannel />} /> */}
         </Routes>
     </BrowserRouter>
 );
