@@ -3,26 +3,6 @@ import { Component } from 'react';
 
 import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem.js';
 
-// Временное хранилиже данных
-
-// const deviceName = [
-//     { item: 'СФ-03' },
-//     { item: 'PTB210' },
-//     { item: 'БА-1' }
-// ];
-
-// const speedList = [
-//     { item: 1200 },
-//     { item: 9600 },
-//     { item: 19200 }
-// ];
-
-// const interfaceListConnection = [
-//     { item: 'RS232' },
-//     { item: 'RS485' },
-//     { item: 'V.23' }
-// ];
-
 class ItemChannel extends Component {
 
     constructor(props) {

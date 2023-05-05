@@ -1,4 +1,4 @@
-import './SettingChannel.scss';
+import './settingChannel.scss';
 import ItemChannel from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
 import axios from 'axios';

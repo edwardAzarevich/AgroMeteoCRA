@@ -1,8 +1,6 @@
 import React from 'react';
 import '../style/SignInUp.scss';
-import SignServices from '../../../services/SignServices';
-
-import * as req from '../../../services/services';
+import SignServices from '../../../services/signServices';
 import Spinner from '../../../Spinner/spinner';
 
 class Signin extends React.Component {

@@ -1,4 +1,4 @@
-import './Sensor.scss';
+import './sensor.scss';
 import SensorListValue from './sensor-list-value/sensor-list-value';
 
 

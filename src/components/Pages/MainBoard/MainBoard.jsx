@@ -1,7 +1,7 @@
 import * as Services from '../../services/services';
 import Sensor from '../Senser/sensor';
 import { useState } from "react";
-import './MainBoard.scss';
+import './mainBoard.scss';
 
 
 //need review create new component
