@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Farsan&family=Racing+Sans+One&family=Space+Mono:wght@700&display=swap");
-.NameSetting {
-    text-align: justify;
-}
+// .NameSetting {
+//     text-align: justify;
+// }
 .test li {
     display: inline;
     margin-right: 20px;
 }
 .save {
-    color: black;
+    color: white;
     margin-top: 1%;
+}
+.status-server {
+    color: red;
 }

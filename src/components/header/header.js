@@ -53,7 +53,7 @@ class MainHeader extends Component {
         return (
             <div className='Header' >
                 <header id='main-header' className="main">
-                    <a href='/settingChannel' className="logo">Peleng</a>
+                    <a href='/setting' className="logo">Peleng</a>
                     <nav className="nav">
                         <time className="time-clock">
                             <Clock />

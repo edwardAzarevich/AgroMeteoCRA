@@ -76,21 +76,6 @@ let configJSON = [
     }
 ];
 
-/*req.then(() => {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <BrowserRouter>
-            <Routes>
-                <Route exact path='/' element={<App configJSON={configJSON} />} />
-            </Routes>
-            <Routes>
-                <Route exact path='/main' element={<StartPage />} />
-                <Route exact path="/footer" element={<Footer />} />
-                <Route exact path="/home" element={<Home />} />
-            </Routes>
-        </BrowserRouter>
-    );
-}).catch(() => {*/
 configJSON = '';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

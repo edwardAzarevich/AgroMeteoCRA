@@ -6,4 +6,10 @@ const getSettingParams = async () => {
     return configJSON;
 };
 
-export { getSettingParams };
+const getSensorParams = async () => {
+    const data = await axios.get('http://localhost:4000/sensor-params');
+    const sensorParams = JSON.parse(JSON.stringify(data));
+    return sensorParams.data;
+}
+
+export { getSettingParams, getSensorParams };

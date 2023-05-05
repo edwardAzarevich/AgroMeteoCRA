@@ -5,23 +5,23 @@ import ListChannelSpeed from './Setting-channel-list-item/SettingChannelListItem
 
 // Временное хранилиже данных
 
-const deviceName = [
-    { item: 'СФ-03' },
-    { item: 'PTB210' },
-    { item: 'БА-1' }
-];
+// const deviceName = [
+//     { item: 'СФ-03' },
+//     { item: 'PTB210' },
+//     { item: 'БА-1' }
+// ];
 
-const speedList = [
-    { item: 1200 },
-    { item: 9600 },
-    { item: 19200 }
-];
+// const speedList = [
+//     { item: 1200 },
+//     { item: 9600 },
+//     { item: 19200 }
+// ];
 
-const interfaceListConnection = [
-    { item: 'RS232' },
-    { item: 'RS485' },
-    { item: 'V.23' }
-];
+// const interfaceListConnection = [
+//     { item: 'RS232' },
+//     { item: 'RS485' },
+//     { item: 'V.23' }
+// ];
 
 class ItemChannel extends Component {
 
@@ -29,10 +29,28 @@ class ItemChannel extends Component {
         super(props);
     }
 
+    state = {
+        tett: {}
+    }
+
+    createElemDatails = (array = []) => {
+        const datailsElem = array.map((datailItem, i) => {
+            return (
+                < ListChannelSpeed key={i} datailItem={datailItem} />
+            )
+        })
+        return datailsElem;
+    }
+
+
+
     render() {
+
         let saveValueBaudrate = '';
         let saveValueInterfaceConnection = '';
         let saveDeviceName = '';
+        let { testItem, sensorParams } = this.props;
+        const datalistParams = sensorParams.configSensorParams ? sensorParams.configSensorParams : '';
 
         const { numberChannel, configJSON } = this.props;
         if (configJSON) {
@@ -40,25 +58,9 @@ class ItemChannel extends Component {
             saveValueInterfaceConnection = configJSON.phy;
             saveDeviceName = configJSON.dev;
         };
-
-        //console.log(configJSON.dev);
-        const elementSpeed = speedList.map((item, i) => {
-            return (
-                <ListChannelSpeed key={i} {...item} />
-            )
-        });
-
-        const elementNameDevice = deviceName.map((item, i) => {
-            return (
-                <ListChannelSpeed key={i} {...item} />
-            )
-        });
-
-        const elementInterfaceConnection = interfaceListConnection.map((item, i) => {
-            return (
-                <ListChannelSpeed key={i} {...item} />
-            )
-        });
+        const sensorName = this.createElemDatails(datalistParams.sensorName);
+        const sensorSpeed = this.createElemDatails(datalistParams.sensorSpeed);
+        const interfaceConnection = this.createElemDatails(datalistParams.interfaceConnection);
 
         return (
             <li className="list-group-item d-flex justify-content-between">
@@ -73,7 +75,7 @@ class ItemChannel extends Component {
                                     <input type="text" list="comboBox-1" className="setting-select-input"
                                         autoComplete="off" placeholder="Тип" defaultValue={saveValueInterfaceConnection} />
                                     <datalist id="comboBox-1">
-                                        {elementInterfaceConnection}
+                                        {sensorName}
                                     </datalist>
                                 </td>
                             </tr>
@@ -82,7 +84,7 @@ class ItemChannel extends Component {
                                     <input type="text" list="comboBox-2" className="setting-select-input"
                                         autoComplete="off" placeholder="Скорость" defaultValue={saveValueBaudrate} />
                                     <datalist id="comboBox-2">
-                                        {elementSpeed}
+                                        {sensorSpeed}
                                     </datalist>
                                 </td>
                             </tr>
@@ -91,7 +93,7 @@ class ItemChannel extends Component {
                                     <input type="text" list="comboBox-3" className="setting-select-input setting-select-datalist"
                                         autoComplete="off" placeholder="Имя" defaultValue={saveDeviceName} />
                                     <datalist id="comboBox-3">
-                                        {elementNameDevice}
+                                        {interfaceConnection}
                                     </datalist>
                                 </td>
                             </tr>

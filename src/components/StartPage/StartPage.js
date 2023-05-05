@@ -10,7 +10,6 @@ import './StartPage.scss';
 class StartPage extends Component {
 
     render() {
-        const nameClass = 'popup-show';
         return (
             <div>
                 <Header />

@@ -2,7 +2,7 @@ import './SettingChannel.scss';
 import ItemChannel from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
 import axios from 'axios';
-import { getSettingParams } from '../../services/serviceForSetting';
+import { getSensorParams, getSettingParams } from '../../services/serviceForSetting';
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
 const nameChannel = [
@@ -25,11 +25,10 @@ class SettingChannel extends Component {
     }
     state = {
         settingParams: {},
+        sensorParams: {},
         error: false,
         loading: true
     }
-
-
 
     onSaveButton = () => {
         let i = 0;
@@ -44,6 +43,10 @@ class SettingChannel extends Component {
     }
 
     onReqForGetSaveParams = () => {
+        getSensorParams()
+            .then(this.onSensorParamsLeaded)
+            .catch(this.error);
+
         getSettingParams()
             .then(this.onParamsLeaded)
             .catch(this.error);
@@ -53,9 +56,11 @@ class SettingChannel extends Component {
     }
 
     onParamsLeaded = (params) => {
-        //error pls review
-        //this.state.settingParams = params;
-        this.setState({ settingParams: params, error: true });
+        this.setState({ settingParams: params });
+    }
+
+    onSensorParamsLeaded = (params) => {
+        this.setState({ sensorParams: params });
     }
 
     //Creating an array with channel settings objects
@@ -97,21 +102,16 @@ class SettingChannel extends Component {
         let arrayConfigJSON = '';
         let objectForChannal = '';
         let testBlock = this.state.settingParams;
-        let { configJSON } = this.props;
-        configJSON = testBlock ? testBlock : '';
-        const errorMassage = 'Необходимо включить сервер для сохранения данных';
-        //configJSON = '';
+        let configJSON = testBlock ? testBlock : '';
+        const errorMassage = configJSON.block ? '' : 'Необходимо включить сервер для приема и сохранения данных';
         // !!!!!!! review
-        console.log(configJSON);
         if (configJSON.block) {
-            console.log(configJSON.block);
             arrayConfigJSON = configJSON.block[0].ch;
         }
         const listChannelMap = nameChannel.map((item, i) => {
             for (const element of arrayConfigJSON) {
                 if (element.ch_number == item.numberChannel) {
                     objectForChannal = element;
-                    console.log(objectForChannal);
                     break;
                 }
                 else {
@@ -119,7 +119,7 @@ class SettingChannel extends Component {
                 }
             }
             return (
-                <ItemChannel configJSON={objectForChannal} key={i} {...item} />
+                <ItemChannel configJSON={objectForChannal} key={i} {...item} testItem={configJSON} sensorParams={this.state.sensorParams} />
             )
         });
 
@@ -130,6 +130,9 @@ class SettingChannel extends Component {
                     {listChannelMap}
                 </ul>
                 {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
+                <div className='status-server'>
+                    {errorMassage}
+                </div>
             </div >
         )
     }
