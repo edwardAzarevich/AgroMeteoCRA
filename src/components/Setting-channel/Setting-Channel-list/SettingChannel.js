@@ -3,6 +3,8 @@ import ItemChannel from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
 import axios from 'axios';
 import { getSensorParams, getSettingParams } from '../../services/serviceForSetting';
+import ItemChannelt from '../../jsx/itemChannel/ItemChannelt';
+
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
 const nameChannel = [
@@ -129,6 +131,9 @@ class SettingChannel extends Component {
                 <ul className='test' >
                     {listChannelMap}
                 </ul>
+                <div>
+                    <ItemChannelt />
+                </div>
                 {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
                 <div className='status-server'>
                     {errorMassage}

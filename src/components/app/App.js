@@ -21,7 +21,7 @@ class App extends Component {
                             </td>
                             <td className='table-setting-chennel'>
                                 <Routes>
-                                    <Route exact path='/' element={<SettingChannel configJSON={this.props.configJSON} />} />
+                                    <Route exact path='/' element={<SettingChannel />} />
                                 </Routes>
                             </td>
                         </tr>

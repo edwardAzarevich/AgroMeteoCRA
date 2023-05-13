@@ -25,11 +25,10 @@ class ItemChannel extends Component {
 
 
     render() {
-
         let saveValueBaudrate = '';
         let saveValueInterfaceConnection = '';
         let saveDeviceName = '';
-        let { testItem, sensorParams } = this.props;
+        let { sensorParams } = this.props;
         const datalistParams = sensorParams.configSensorParams ? sensorParams.configSensorParams : '';
 
         const { numberChannel, configJSON } = this.props;

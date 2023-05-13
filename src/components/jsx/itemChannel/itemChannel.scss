@@ -1,0 +1,15 @@
+.item-channel {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100px;
+
+    label {
+        margin-top: 5px;
+    }
+
+    input {
+        margin: 5px;
+    }
+}
