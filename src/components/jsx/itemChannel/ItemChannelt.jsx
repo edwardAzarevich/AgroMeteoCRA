@@ -1,17 +1,6 @@
 import './itemChannel.scss';
-import { dataList } from './dataList/dataListForItemChannel';
-import OptionItem from './optionItem/optionItem';
+import { dataList } from './listParamsForDataList/dataListForItemChannel';
 import InputComponent from './inputComponent/InputComponent';
-
-const createElemForDataList = (array = []) => {
-    const dataListElements = array.map((item, i) => {
-        return (
-            < OptionItem key={i} item={item} />
-        )
-    })
-    return dataListElements;
-}
-
 
 const ItemChannelt = ({ channelName, id}) => {
     const defTypeName = 'Тип',
