@@ -132,7 +132,7 @@ class SettingChannel extends Component {
                     {listChannelMap}
                 </ul>
                 <div>
-                    <ItemChannelt />
+                    <ItemChannelt channelName={'Канал'} id={1} />
                 </div>
                 {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
                 <div className='status-server'>
