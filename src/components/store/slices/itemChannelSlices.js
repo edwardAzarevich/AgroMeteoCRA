@@ -1,9 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    typeName: '',
-    sensorName: '',
-    baudRate: ''
+const initialState = {};
+//     id: {
+//         typeName: '',
+//         sensorName: '',
+//         baudRate: ''
+//     }
+// }
+
+const updateValue = (value, newValue, name) => {
+    let result = {};
+    if (value === undefined) {
+        result[name] = newValue;
+        return result;
+    }
+
+    result = value;
+    result[name] = newValue;
+    return result;
 }
 
 const objectSlice = createSlice({
@@ -11,25 +25,23 @@ const objectSlice = createSlice({
     initialState: initialState,
     reducers: {
         typeChange: (state, action) => {
-            state.typeName = action.payload;
+            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { typeName: action.payload.value });
         },
         bautrateChange: (state, action) => {
-            state.baudRate = action.payload
+            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { baudRate: action.payload.value });
         },
         sensorChange: (state, action) => {
-            state.sensorName = action.payload
+            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { sensorName: action.payload.value });
         }
     }
-})
+});
 
 export const componentSelector = {
     getComponent: (state) => {
-        console.log(state)
+        console.log(state);
     }
 }
 
-//export const channelActions  = objectSlice.actions;
-export const { typeChange, bautrateChange, sensorChange } = objectSlice.actions;
+export const channelActions = objectSlice.actions;
 
 export default objectSlice;
-

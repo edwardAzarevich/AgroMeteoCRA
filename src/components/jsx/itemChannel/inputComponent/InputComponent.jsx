@@ -1,6 +1,7 @@
 import OptionItem from "../optionItem/optionItem";
-import { typeChange, componentSelector } from '../../../store/slices/itemChannelSlices';
-import { useAppSelector, useAppDispatch } from '../../../store/configStore/hooks';
+import { useAppDispatch } from '../../../store/configStore/hooks';
+import { componentSelector } from "../../../store/slices/itemChannelSlices";
+import { useSelector } from "react-redux";
 
 const createElemForDataList = (array = []) => {
     const dataListElements = array.map((item, i) => {
@@ -12,17 +13,23 @@ const createElemForDataList = (array = []) => {
 }
 
 
-const InputComponent = ({ defPlaceholder, value, idDataList, listParams, updateValue }) => {
+const InputComponent = ({ defPlaceholder, value, idDataList, listParams, updateValue, id }) => {
     const optionElem = createElemForDataList(listParams),
         idDataListWithID = idDataList;
+
+    const stateData = useSelector(componentSelector.getComponent);
     const dispatch = useAppDispatch();
+
     return (
         <>
             <input
                 list={idDataListWithID}
                 placeholder={defPlaceholder}
                 defaultValue={value}
-                onChange={(e) => { dispatch(updateValue(e.target.value)) }}
+                onChange={(e) => {
+                    dispatch(updateValue({ id: id, value: e.target.value }));
+                    console.log(stateData);
+                }}
             />
             <datalist id={idDataListWithID}>
                 {optionElem}

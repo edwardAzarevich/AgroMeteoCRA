@@ -133,6 +133,7 @@ class SettingChannel extends Component {
                 </ul>
                 <div>
                     <ItemChannelt channelName={'Канал'} id={1} />
+                    <ItemChannelt channelName={'Канал'} id={2} />
                 </div>
                 {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
                 <div className='status-server'>

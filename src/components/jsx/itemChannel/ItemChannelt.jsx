@@ -1,43 +1,36 @@
 import './itemChannel.scss';
 import { dataList } from './listParamsForDataList/dataListForItemChannel';
 import InputComponent from './inputComponent/InputComponent';
-import { useAppSelector, useAppDispatch } from '../../store/configStore/hooks'
-import { useDispatch, useSelector } from 'react-redux';
-import { typeChange, bautrateChange, sensorChange, componentSelector } from '../../store/slices/itemChannelSlices';
-
+import { channelActions } from '../../store/slices/itemChannelSlices';
 
 const ItemChannelt = ({ channelName, id }) => {
     const defTypeName = 'Тип',
         defbaudRate = 'Скорость',
         defSensorName = 'Имя';
 
-    const channel = useAppSelector(
-        (state) => state.channel);
-
-    const count = useSelector(componentSelector.getComponent);
-
-
     const optionElemInterfaceConnection =
         <InputComponent
             defPlaceholder={defTypeName}
+            id={id}
             idDataList={`channel-list-interface${id}`}
             listParams={dataList.nameInterfaceConnect}
-            updateValue={typeChange}
+            updateValue={channelActions.typeChange}
         />
     const optionElemNameSensor =
         <InputComponent
             defPlaceholder={defSensorName}
+            id={id}
             idDataList={`channel-name-sensor${id}`}
             listParams={dataList.nameSensorList}
-            updateValue={sensorChange}
+            updateValue={channelActions.sensorChange}
         />
     const optionElembaudRate =
         <InputComponent
             defPlaceholder={defbaudRate}
+            id={id}
             idDataList={`channel-baud-rate${id}`}
             listParams={dataList.baudRate}
-            value={count}
-            updateValue={bautrateChange}
+            updateValue={channelActions.bautrateChange}
         />
     return (
         <div className='item-channel'>
@@ -45,7 +38,6 @@ const ItemChannelt = ({ channelName, id }) => {
             {optionElemInterfaceConnection}
             {optionElemNameSensor}
             {optionElembaudRate}
-            {count}
         </div>
     )
 }
