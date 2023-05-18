@@ -16,8 +16,6 @@ const createElemForDataList = (array = []) => {
 const InputComponent = ({ defPlaceholder, value, idDataList, listParams, updateValue, id }) => {
     const optionElem = createElemForDataList(listParams),
         idDataListWithID = idDataList;
-
-    const stateData = useSelector(componentSelector.getComponent);
     const dispatch = useAppDispatch();
 
     return (
@@ -28,7 +26,6 @@ const InputComponent = ({ defPlaceholder, value, idDataList, listParams, updateV
                 defaultValue={value}
                 onChange={(e) => {
                     dispatch(updateValue({ id: id, value: e.target.value }));
-                    console.log(stateData);
                 }}
             />
             <datalist id={idDataListWithID}>

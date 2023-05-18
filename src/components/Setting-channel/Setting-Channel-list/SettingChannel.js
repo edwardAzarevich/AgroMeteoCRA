@@ -4,6 +4,10 @@ import { Component } from 'react';
 import axios from 'axios';
 import { getSensorParams, getSettingParams } from '../../services/serviceForSetting';
 import ItemChannelt from '../../jsx/itemChannel/ItemChannelt';
+import { componentSelector } from '../../store/slices/itemChannelSlices';
+import { useSelector } from 'react-redux';
+import SettingChannelPages from '../settingChannelPages/settingChannelPages';
+
 
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
@@ -42,6 +46,10 @@ class SettingChannel extends Component {
                 ch: this.CreateParamsArray()
             }
         });
+        console.log({
+            block_number: `${i}`,
+            ch: this.CreateParamsArray()
+        })
     }
 
     onReqForGetSaveParams = () => {
@@ -54,7 +62,7 @@ class SettingChannel extends Component {
             .catch(this.error);
     }
     componentDidMount() {
-        this.onReqForGetSaveParams();
+        // this.onReqForGetSaveParams();
     }
 
     onParamsLeaded = (params) => {
@@ -97,6 +105,8 @@ class SettingChannel extends Component {
             }
             nubmerChannel++;
         });
+
+
         return arrayForObject;
     };
 
@@ -132,16 +142,17 @@ class SettingChannel extends Component {
                     {listChannelMap}
                 </ul>
                 <div>
-                    <ItemChannelt channelName={'Канал'} id={1} />
-                    <ItemChannelt channelName={'Канал'} id={2} />
+                    <SettingChannelPages />
                 </div>
-                {<button onClick={this.onSaveButton} className='Main save'>Сохранить</button>}
+                {<button /* {onClick={this.onSaveButton}}*/ className='Main save'>Сохранить</button>}
                 <div className='status-server'>
                     {errorMassage}
                 </div>
             </div >
         )
     }
+
+
 }
 
 export default SettingChannel;

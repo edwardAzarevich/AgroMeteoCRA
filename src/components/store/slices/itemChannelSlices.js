@@ -8,38 +8,30 @@ const initialState = {};
 //     }
 // }
 
-const updateValue = (value, newValue, name) => {
-    let result = {};
-    if (value === undefined) {
-        result[name] = newValue;
-        return result;
-    }
-
-    result = value;
-    result[name] = newValue;
-    return result;
-}
-
 const objectSlice = createSlice({
     name: 'channel',
     initialState: initialState,
     reducers: {
         typeChange: (state, action) => {
-            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { typeName: action.payload.value });
+            const id = action.payload.id;
+            const value = action.payload.value;
+            state[id] = Object.assign(state[id] ?? {}, { ch_number: id, phy: value, });
         },
         bautrateChange: (state, action) => {
-            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { baudRate: action.payload.value });
+            const id = action.payload.id;
+            const value = action.payload.value;
+            state[id] = Object.assign(state[id] ?? {}, { baudrate: value });
         },
         sensorChange: (state, action) => {
-            state[action.payload.id] = Object.assign(state[action.payload.id] ?? {}, { sensorName: action.payload.value });
+            const id = action.payload.id;
+            const value = action.payload.value;
+            state[id] = Object.assign(state[id] ?? {}, { dev: value });
         }
     }
 });
 
 export const componentSelector = {
-    getComponent: (state) => {
-        console.log(state);
-    }
+    getComponent: (state) => state
 }
 
 export const channelActions = objectSlice.actions;

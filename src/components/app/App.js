@@ -8,38 +8,32 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { store } from '../store/configStore/configStore';
 import { Provider } from 'react-redux';
+import SettingChannelPages from '../Setting-channel/settingChannelPages/settingChannelPages';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-    };
-    ons = () => { console.log(store); }
-    render() {
-        this.ons();
-        return (
-            <Provider store={store}>
-                <div>
-                    <Header />
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td className='table-menu'>
-                                    {/* <SideBar /> */}
-                                </td>
-                                <td className='table-setting-chennel'>
-                                    <Routes>
-                                        <Route exact path='/' element={<SettingChannel />} />
-                                    </Routes>
-                                </td>
-                            </tr>
-                        </tbody>
+const App = () => {
+    return (
+        <div>
+            <Header />
+            <table>
+                <tbody>
+                    <tr>
+                        <td className='table-menu'>
+                            {/* <SideBar /> */}
+                        </td>
+                        <Provider store={store}>
+                            <td className='table-setting-chennel'>
+                                <Routes>
+                                    <Route exact path='/' element={<SettingChannel />} />
+                                </Routes>
+                            </td>
+                        </Provider>
+                    </tr>
+                </tbody>
 
 
-                    </table>
-                </div>
-            </Provider>
-        )
-    }
+            </table>
+        </div>
+    )
 }
 
 export default App;

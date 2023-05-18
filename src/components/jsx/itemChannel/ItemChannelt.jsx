@@ -1,12 +1,15 @@
 import './itemChannel.scss';
 import { dataList } from './listParamsForDataList/dataListForItemChannel';
 import InputComponent from './inputComponent/InputComponent';
-import { channelActions } from '../../store/slices/itemChannelSlices';
+import { channelActions, componentSelector } from '../../store/slices/itemChannelSlices';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ItemChannelt = ({ channelName, id }) => {
     const defTypeName = 'Тип',
         defbaudRate = 'Скорость',
         defSensorName = 'Имя';
+
+    const count = useSelector(componentSelector.getComponent);
 
     const optionElemInterfaceConnection =
         <InputComponent
