@@ -34,15 +34,14 @@ const SettingChannelPages = () => {
     return (
         <div>
             <h1>Конфигурация каналов</h1>
-            <div className="row">
-                <ItemChannelt className='col' channelName={'Канал'} id={1} />
-                <ItemChannelt className='col' channelName={'Канал'} id={2} />
+            <div >
+                <ItemChannelt channelName={'Канал'} id={1} />
+                <ItemChannelt channelName={'Канал'} id={2} />
             </div>
-            <div class="row">
-                <div class="col"><div><input /> <input /> <input /></div></div>
-                <div class="col">col <input /></div>
-                <div class="col">col <input /></div>
-                <div class="col">col <input /></div>
+            <div >
+                <div >col <input /></div>
+                <div >col <input /></div>
+                <div >col <input /></div>
             </div>
             <button onClick={() => onSendConfigCh(objChannel)}>Отправить</button>
         </div >
