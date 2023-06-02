@@ -34,14 +34,11 @@ const SettingChannelPages = () => {
     return (
         <div>
             <h1>Конфигурация каналов</h1>
-            <div >
+            <div className="d-flex align-content-start flex-wrap"  >
                 <ItemChannelt channelName={'Канал'} id={1} />
                 <ItemChannelt channelName={'Канал'} id={2} />
-            </div>
-            <div >
-                <div >col <input /></div>
-                <div >col <input /></div>
-                <div >col <input /></div>
+                <ItemChannelt channelName={'Канал'} id={3} />
+                <ItemChannelt channelName={'Канал'} id={4} />
             </div>
             <button onClick={() => onSendConfigCh(objChannel)}>Отправить</button>
         </div >
