@@ -174,7 +174,7 @@ const HomeNew = (count, value) => {
             <Sensor sensor={item} value={sensorsValue} valueobj={objValue} key={i} timeArrival={timeArrival} />
         )
     });
-
+    console.log('rerendorApp');
     return (
         <div className="Home" >
             <h1 className='Header'></h1>

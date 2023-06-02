@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 import './index.css';
 import ReactDOM from "react-dom/client";
@@ -11,6 +13,7 @@ import SettingChannel from './components/Setting-channel/Setting-Channel-list/Se
 import signin from './components/Pages/Login/SignIn/Signin';
 import signup from './components/Pages/Login/SignUp/Signup';
 import StartPage from './components/StartPage/StartPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

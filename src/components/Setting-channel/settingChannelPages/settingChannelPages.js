@@ -3,6 +3,7 @@ import { componentSelector } from '../../store/slices/itemChannelSlices';
 import { useSelector } from "react-redux";
 import ItemChannelt from "../../jsx/itemChannel/ItemChannelt";
 import axios from 'axios';
+import './settingChannelPages.scss';
 
 
 const SettingChannelPages = () => {
@@ -33,10 +34,18 @@ const SettingChannelPages = () => {
     return (
         <div>
             <h1>Конфигурация каналов</h1>
-            <ItemChannelt channelName={'Канал'} id={1} />
-            <ItemChannelt channelName={'Канал'} id={2} />
+            <div className="row">
+                <ItemChannelt className='col' channelName={'Канал'} id={1} />
+                <ItemChannelt className='col' channelName={'Канал'} id={2} />
+            </div>
+            <div class="row">
+                <div class="col"><div><input /> <input /> <input /></div></div>
+                <div class="col">col <input /></div>
+                <div class="col">col <input /></div>
+                <div class="col">col <input /></div>
+            </div>
             <button onClick={() => onSendConfigCh(objChannel)}>Отправить</button>
-        </div>
+        </div >
     )
 }
 

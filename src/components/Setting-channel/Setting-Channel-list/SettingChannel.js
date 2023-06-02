@@ -137,10 +137,10 @@ class SettingChannel extends Component {
 
         return (
             <div>
-                <h1>Конфигурация каналов</h1>
-                <ul className='test' >
-                    {listChannelMap}
-                </ul>
+                {/* <h1>Конфигурация каналов</h1>  */}
+                {/* <ul className='test' > */}
+                {/* {listChannelMap} */}
+                {/* </ul> */}
                 <div>
                     <SettingChannelPages />
                 </div>

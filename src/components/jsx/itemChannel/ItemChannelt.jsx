@@ -38,8 +38,12 @@ const ItemChannelt = ({ channelName, id }) => {
     return (
         <div className='item-channel'>
             <label>{channelName} {id}</label>
-            {optionElemInterfaceConnection}
-            {optionElemNameSensor}
+            <div>
+                {optionElemInterfaceConnection}
+            </div>
+            <div>
+                {optionElemNameSensor}
+            </div>
             {optionElembaudRate}
         </div>
     )

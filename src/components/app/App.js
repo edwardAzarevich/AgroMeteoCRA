@@ -14,24 +14,11 @@ const App = () => {
     return (
         <div>
             <Header />
-            <table>
-                <tbody>
-                    <tr>
-                        <td className='table-menu'>
-                            {/* <SideBar /> */}
-                        </td>
-                        <Provider store={store}>
-                            <td className='table-setting-chennel'>
-                                <Routes>
-                                    <Route exact path='/' element={<SettingChannel />} />
-                                </Routes>
-                            </td>
-                        </Provider>
-                    </tr>
-                </tbody>
-
-
-            </table>
+            <Provider store={store}>
+                <Routes>
+                    <Route exact path='/' element={<SettingChannel />} />
+                </Routes>
+            </Provider>
         </div>
     )
 }
