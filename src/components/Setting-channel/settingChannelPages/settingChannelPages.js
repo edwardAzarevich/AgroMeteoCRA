@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { componentSelector, channelActions } from '../../store/slices/itemChannelSlices';
 import { useSelector } from "react-redux";
 import ItemChannelt from "../../jsx/itemChannel/ItemChannelt";
@@ -8,18 +8,19 @@ import { getSettingParams } from '../../services/serviceForSetting';
 import { useAppDispatch } from '../../store/configStore/hooks';
 
 
+
 const SettingChannelPages = () => {
 
-    const onSaveButton1 = (objForSend) => {
+    const postSave = (objForSend) => {
         axios({
             method: 'post',
-            url: 'http://10.0.25.10:4000/',
+            url: 'http://localhost:4000/',
             data: objForSend
         });
     }
 
+    const idChannel = [0, 1];
     const defvalue = useSelector(componentSelector.getComponent);
-    console.log(defvalue[1]);
     const dispatch = useAppDispatch();
 
     const onSendConfigCh = (objChannel) => {
@@ -33,7 +34,7 @@ const SettingChannelPages = () => {
         mainObjectForSend.block = [];
         mainObjectForSend.block.push(item);
         console.log(mainObjectForSend);
-        onSaveButton1(mainObjectForSend);
+        postSave(mainObjectForSend);
     }
     const onUpdate = async () => {
         const configg = await getSettingParams();
@@ -43,11 +44,15 @@ const SettingChannelPages = () => {
     useEffect(() => { onUpdate() }, []);
 
     const objChannel = useSelector(componentSelector.getComponent);
+    const channalList = idChannel.map((id) => {
+        return <ItemChannelt channelName={'Канал'} id={id} key={id} defvalue={defvalue[id] ?? ''} />
+    })
     return (
         <div>
             <h1>Конфигурация каналов</h1>
             <div className="d-flex align-content-start flex-wrap"  >
-                <ItemChannelt channelName={'Канал'} id={1} defvalue={defvalue[1]} />
+                {channalList}
+                {/* <ItemChannelt channelName={'Канал'} id={1} defvalue={defvalue[1]} /> */}
                 {/* <ItemChannelt channelName={'Канал'} id={2} />
                 <ItemChannelt channelName={'Канал'} id={3} />
                 <ItemChannelt channelName={'Канал'} id={4} /> */}

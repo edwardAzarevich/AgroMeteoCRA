@@ -6,18 +6,7 @@ import SettingChannelPages from '../settingChannelPages/settingChannelPages';
 
 
 // Количество настраиваемых каналов (в дальнейшем переделать)
-const nameChannel = [
-    { numberChannel: 1 },
-    { numberChannel: 2 },
-    { numberChannel: 3 },
-    { numberChannel: 4 },
-    { numberChannel: 5 },
-    { numberChannel: 6 },
-    { numberChannel: 7 },
-    { numberChannel: 8 },
-    { numberChannel: 9 },
-    { numberChannel: 10 },
-];
+
 
 // need code review
 class SettingChannel extends Component {
@@ -30,21 +19,21 @@ class SettingChannel extends Component {
         loading: true
     }
 
-    onReqForGetSaveParams = async () => {
-        const configg = await getSettingParams();
-        this.onParamsLeaded(configg);
-        return configg;
-    }
-    componentDidMount() {
-        this.onReqForGetSaveParams()
-            .then((config) => {
-                //console.log(config);
-            })
-    }
+    // onReqForGetSaveParams = async () => {
+    //     const configg = await getSettingParams();
+    //     this.onParamsLeaded(configg);
+    //     return configg;
+    // }
+    // componentDidMount() {
+    //     this.onReqForGetSaveParams()
+    //         .then((config) => {
+    //             //console.log(config);
+    //         })
+    // }
 
-    onParamsLeaded = (params) => {
-        this.setState({ settingParams: params });
-    }
+    // onParamsLeaded = (params) => {
+    //     this.setState({ settingParams: params });
+    // }
 
     //Creating an array with channel settings objects
 

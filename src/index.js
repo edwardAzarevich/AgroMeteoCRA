@@ -19,13 +19,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route exact path='/setting' element={<App />} />
+            <Route exact path='/startPage' element={<StartPage />} />
         </Routes>
         {/* <Headers /> */}
         {/* <SideBar /> */}
         {/* <SideBar /> */}
         <Routes>
-            <Route exact path="/" element={<StartPage />} />
+            <Route exact path="/" element={<App />} />
         </Routes>
     </BrowserRouter>
 );
