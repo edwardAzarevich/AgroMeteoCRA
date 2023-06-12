@@ -26,6 +26,12 @@ const objectSlice = createSlice({
             const id = action.payload.id;
             const value = action.payload.value;
             state[id] = Object.assign(state[id] ?? {}, { dev: value });
+        },
+        allParams: (state, action) => {
+            const id = action.payload[0].ch_number;
+            const allParams = action.payload[0];
+            //console.log(allParams);
+            state[id] = Object.assign(state[id] ?? {}, allParams)
         }
     }
 });

@@ -1,11 +1,6 @@
 import './settingChannel.scss';
-import ItemChannel from '../Setting-Channel-item/SettingChannelItem.js';
 import { Component } from 'react';
-import axios from 'axios';
 import { getSensorParams, getSettingParams } from '../../services/serviceForSetting';
-import ItemChannelt from '../../jsx/itemChannel/ItemChannelt';
-import { componentSelector } from '../../store/slices/itemChannelSlices';
-import { useSelector } from 'react-redux';
 import SettingChannelPages from '../settingChannelPages/settingChannelPages';
 
 
@@ -31,120 +26,38 @@ class SettingChannel extends Component {
     }
     state = {
         settingParams: {},
-        sensorParams: {},
         error: false,
         loading: true
     }
 
-    onSaveButton = () => {
-        let i = 0;
-        axios({
-            method: 'post',
-            url: 'http://10.0.25.10:4000/',
-            data: {
-                block_number: `${i}`,
-                ch: this.CreateParamsArray()
-            }
-        });
-        console.log({
-            block_number: `${i}`,
-            ch: this.CreateParamsArray()
-        })
-    }
-
-    onReqForGetSaveParams = () => {
-        getSensorParams()
-            .then(this.onSensorParamsLeaded)
-            .catch(this.error);
-
-        getSettingParams()
-            .then(this.onParamsLeaded)
-            .catch(this.error);
+    onReqForGetSaveParams = async () => {
+        const configg = await getSettingParams();
+        this.onParamsLeaded(configg);
+        return configg;
     }
     componentDidMount() {
-        // this.onReqForGetSaveParams();
+        this.onReqForGetSaveParams()
+            .then((config) => {
+                //console.log(config);
+            })
     }
 
     onParamsLeaded = (params) => {
         this.setState({ settingParams: params });
     }
 
-    onSensorParamsLeaded = (params) => {
-        this.setState({ sensorParams: params });
-    }
-
     //Creating an array with channel settings objects
-    CreateParamsArray = () => {
-
-        const arrayForObject = [];
-        const arrayForObjectList = ['ch_number', 'phy', 'baudrate', 'dev'];
-        const settingListComponent = document.querySelectorAll('.block-configuration');
-        const numbChannel = document.querySelectorAll('.table-setting-number');
-        //
-        let nubmerChannel = 0;
-        settingListComponent.forEach(elementList => {
-            // Not change
-            let paramsElementList = new Object();
-            let i = 1;
-            let itemComponents = elementList.querySelectorAll('.setting-select-input');
-
-            itemComponents.forEach(elementItem => {
-                if (elementItem.value !== "") {
-                    paramsElementList[`${arrayForObjectList[i]}`] = elementItem.value;
-                    i++;
-                }
-            });
-            // Determine the number of elements in an object
-            const sizeParamsElementList = Object.keys(paramsElementList).length;
-
-            // Sending elements from the page to JSON
-            // if at least one cell is empty, nothing will be sent
-            if (sizeParamsElementList === 3) {
-                paramsElementList[`${arrayForObjectList[0]}`] = numbChannel[nubmerChannel].textContent;
-                arrayForObject.push(paramsElementList);
-            }
-            nubmerChannel++;
-        });
-
-
-        return arrayForObject;
-    };
 
     render() {
-        let arrayConfigJSON = '';
-        let objectForChannal = '';
         let testBlock = this.state.settingParams;
         let configJSON = testBlock ? testBlock : '';
         const errorMassage = configJSON.block ? '' : 'Необходимо включить сервер для приема и сохранения данных';
         // !!!!!!! review
-        if (configJSON.block) {
-            arrayConfigJSON = configJSON.block[0].ch;
-        }
-        const listChannelMap = nameChannel.map((item, i) => {
-            for (const element of arrayConfigJSON) {
-                if (element.ch_number == item.numberChannel) {
-                    objectForChannal = element;
-                    break;
-                }
-                else {
-                    objectForChannal = '';
-                }
-            }
-            return (
-                <ItemChannel configJSON={objectForChannal} key={i} {...item} testItem={configJSON} sensorParams={this.state.sensorParams} />
-            )
-        });
-
         return (
             <div>
-                {/* <h1>Конфигурация каналов</h1>  */}
-                {/* <ul className='test' > */}
-                {/* {listChannelMap} */}
-                {/* </ul> */}
                 <div>
                     <SettingChannelPages />
                 </div>
-                {<button /* {onClick={this.onSaveButton}}*/ className='Main save'>Сохранить</button>}
                 <div className='status-server'>
                     {errorMassage}
                 </div>
