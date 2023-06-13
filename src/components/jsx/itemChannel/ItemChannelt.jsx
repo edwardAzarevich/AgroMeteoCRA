@@ -1,8 +1,7 @@
 import './itemChannel.scss';
 import { dataList } from './listParamsForDataList/dataListForItemChannel';
 import InputComponent from './inputComponent/InputComponent';
-import { channelActions, componentSelector } from '../../store/slices/itemChannelSlices';
-import { useDispatch, useSelector } from 'react-redux';
+import { channelActions } from '../../store/slices/itemChannelSlices';
 
 const ItemChannelt = ({ channelName, id, defvalue }) => {
     const defTypeName = 'Тип',
@@ -13,7 +12,7 @@ const ItemChannelt = ({ channelName, id, defvalue }) => {
         <InputComponent
             defPlaceholder={defTypeName}
             id={id}
-            defvalue={defvalue ? defvalue.phy : ''}
+            defvalue={defvalue.phy}
             idDataList={`channel-list-interface${id}`}
             listParams={dataList.nameInterfaceConnect}
             updateValue={channelActions.typeChange}
@@ -22,7 +21,7 @@ const ItemChannelt = ({ channelName, id, defvalue }) => {
         <InputComponent
             defPlaceholder={defSensorName}
             id={id}
-            defvalue={defvalue ? defvalue.dev : ''}
+            defvalue={defvalue.dev}
             idDataList={`channel-name-sensor${id}`}
             listParams={dataList.nameSensorList}
             updateValue={channelActions.sensorChange}
@@ -31,7 +30,7 @@ const ItemChannelt = ({ channelName, id, defvalue }) => {
         <InputComponent
             defPlaceholder={defbaudRate}
             id={id}
-            defvalue={defvalue ? defvalue.baudrate : ''}
+            defvalue={defvalue.baudrate}
             idDataList={`channel-baud-rate${id}`}
             listParams={dataList.baudRate}
             updateValue={channelActions.bautrateChange}

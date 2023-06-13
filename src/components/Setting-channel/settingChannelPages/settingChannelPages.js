@@ -19,7 +19,7 @@ const SettingChannelPages = () => {
         });
     }
 
-    const idChannel = [0, 1];
+    const idChannel = [1, 2, 3, 4, 5];
     const defvalue = useSelector(componentSelector.getComponent);
     const dispatch = useAppDispatch();
 
@@ -37,8 +37,10 @@ const SettingChannelPages = () => {
         postSave(mainObjectForSend);
     }
     const onUpdate = async () => {
-        const configg = await getSettingParams();
-        dispatch(channelActions.allParams(configg.block[0].ch))
+        const config = await getSettingParams();
+        if (config.block !== undefined && config.block.length > 0) {
+            dispatch(channelActions.allParams((config.block[0].ch)));
+        }
     }
 
     useEffect(() => { onUpdate() }, []);
@@ -52,14 +54,9 @@ const SettingChannelPages = () => {
             <h1>Конфигурация каналов</h1>
             <div className="d-flex align-content-start flex-wrap"  >
                 {channalList}
-                {/* <ItemChannelt channelName={'Канал'} id={1} defvalue={defvalue[1]} /> */}
-                {/* <ItemChannelt channelName={'Канал'} id={2} />
-                <ItemChannelt channelName={'Канал'} id={3} />
-                <ItemChannelt channelName={'Канал'} id={4} /> */}
             </div>
-            <button onClick={() => onSendConfigCh(objChannel)}>Отправить</button>
-            <button onClick={() => onUpdate()}>Принять</button>
-
+            <button className="for-button-save-send" onClick={() => onSendConfigCh(objChannel)}>Сохранить</button>
+            <button className="for-button-save-send" onClick={() => onUpdate()}>Обновить с сервера</button>
         </div >
     )
 }

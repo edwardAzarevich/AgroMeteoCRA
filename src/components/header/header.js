@@ -1,7 +1,7 @@
 import './header.scss';
 import { Component } from 'react';
 import axios from 'axios';
-import Clock from '../Clock/Clock';
+import Clock from '../clock/Clock';
 
 class MainHeader extends Component {
 

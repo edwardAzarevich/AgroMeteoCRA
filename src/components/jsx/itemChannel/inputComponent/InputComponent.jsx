@@ -22,7 +22,7 @@ const InputComponent = ({ defPlaceholder, defvalue, idDataList, listParams, upda
             <input
                 list={idDataListWithID}
                 placeholder={defPlaceholder}
-                value={defvalue}
+                value={defvalue ?? ''}
                 onChange={(e) => {
                     dispatch(updateValue({ id: id, value: e.target.value }));
                 }}

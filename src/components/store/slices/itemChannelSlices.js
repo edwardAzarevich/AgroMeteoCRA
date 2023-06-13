@@ -30,16 +30,12 @@ const objectSlice = createSlice({
             state[id] = Object.assign(state[id] ?? {}, { dev: value });
         },
         allParams: (state, action) => {
-            // const id = action.payload[0].ch_number;
-            // const allParams = action.payload[0];
-            // console.log(action.payload);
-            action.payload.forEach((value, id) => {
-                state[id] = value;
-                console.log(state[id]);
+            action.payload.forEach((value) => {
+                state[value.ch_number] = value;
             });
-            // state[id] = Object.assign(state[id] ?? {}, allParams)
 
         }
+
     }
 });
 

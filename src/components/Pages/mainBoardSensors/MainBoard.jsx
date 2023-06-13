@@ -1,5 +1,5 @@
 import * as Services from '../../services/services';
-import Sensor from '../Senser/sensor';
+import Sensor from './Senser/sensor';
 import { useState } from "react";
 import './mainBoard.scss';
 

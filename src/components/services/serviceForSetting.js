@@ -4,11 +4,10 @@ const getSettingParams = async () => {
     const data = await axios.get('http://localhost:4000/config');
     let configJSON;
     if (data.data.config === '') {
-        configJSON = '';
+        configJSON = {};
     } else {
         configJSON = JSON.parse(data.data.config);
     }
-    console.log(configJSON);
     return configJSON;
 };
 

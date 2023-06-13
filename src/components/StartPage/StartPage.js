@@ -3,7 +3,7 @@ import Header from '../header/header';
 import { Component } from 'react';
 import Signin from '../Pages/Login/SignIn/Signin';
 import Signup from '../Pages/Login/SignUp/Signup';
-import MainBoard from '../Pages/MainBoard/MainBoard';
+import MainBoard from '../Pages/mainBoardSensors/MainBoard';
 import './StartPage.scss';
 
 class StartPage extends Component {
