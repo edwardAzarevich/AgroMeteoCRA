@@ -1,0 +1,52 @@
+$margin-indents: 0 auto 15px auto;
+
+.Board {
+    text-align: center;
+    padding: 20px;
+    background-color: white; //
+    border: 1px solid #8b0000; //
+    border-radius: 30px;
+    min-width: 250px;
+    margin: 10px 0;
+    //margin: 50px 20%;
+
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .sensor-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 170px;
+            min-width: 150px;
+            margin: 1px 10px 10px 0px;
+            border: 1px solid #8b0000; //
+            padding: 5px;
+            border-radius: 15px;
+            background-color: #ffe2b399; //
+
+            header {
+                margin-bottom: 5px;
+            }
+
+            .sensor-params {
+                display: flex;
+                //flex-direction: column;
+                justify-content: center;
+
+                .sensor-value {
+                    margin-right: 5px;
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .title {
+        width: fit-content;
+        margin: $margin-indents;
+    }
+}

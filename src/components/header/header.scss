@@ -4,14 +4,13 @@ html,
 body {
     padding: 0;
     margin: 0;
+    background-color: #fff1da99;
 }
 
 .main {
     display: flex;
     box-sizing: border-box;
-    /* margin: 0px; */
-    background-color: #24252a;
-    /* justify-content: space-between; */
+    background-color: #740a01; //
     align-items: center;
 
     > .logo {
@@ -40,23 +39,32 @@ body {
         cursor: pointer;
         &:hover {
             transition: all 0.3s ease 0s;
-            color: rgba(0, 136, 169, 0.8);
+            //color: rgba(0, 136, 169, 0.8);
+            color: #fff1da99; //
         }
     }
     .login {
-        width: 300px;
+        width: 240px;
+    }
+    .time-clock {
+        font-size: 25px;
+        letter-spacing: 3px;
+        margin-right: 0 auto;
+        color: #fff;
     }
 }
 
 button {
     padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
+    background-color: rgb(116 10 1);
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    color: #fff; //
 
     &:hover {
-        background-color: rgba(0, 136, 169, 0.8);
+        // background-color: rgba(0, 136, 169, 0.8);
+        background-color: #bd1e1e;
     }
 }
 a {
