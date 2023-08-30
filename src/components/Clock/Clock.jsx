@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Clock = (updateInterval = 10000) => {
+const Clock = ({updateInterval = 1000}) => {
     const [date, setDate] = useState(new Date());
 
     const refreshClock = () => {
