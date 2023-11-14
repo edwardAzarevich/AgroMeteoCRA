@@ -1,0 +1,35 @@
+{
+    "strip": [{
+        "number": 1,
+        "location": {
+            "left": [{
+                "parametorName": "WS",
+                "value": 15
+            }, {
+                "parametorName": "WD",
+                "value": 200
+            }],
+            "right": [],
+            "center": [{
+                "parametorName": "AP",
+                "value": 1200
+            }]
+        }
+    }, {
+        "number": 1,
+        "location": {
+            "left": [{
+                "parametorName": "WS",
+                "value": 15
+            }, {
+                "parametorName": "WD",
+                "value": 200
+            }],
+            "right": [],
+            "center": [{
+                "parametorName": "AP",
+                "value": 1200
+            }]
+        }
+    }]
+}

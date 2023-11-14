@@ -1,7 +1,6 @@
 import axios from "axios";
 
 class SignServices {
-
     axiosPost = async (body) => {
         let res = await axios({
             method: 'post',
@@ -13,7 +12,7 @@ class SignServices {
             withCredentials: true
         });
 
-        return await res;
+        return res;
     }
 
     postLog = async (username, password) => {

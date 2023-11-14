@@ -6,8 +6,6 @@ import './mainBoard.scss';
 
 //need review create new component
 let timerForSend = null;
-
-
 const HomeNew = (count, value) => {
 
     const sensors = [
@@ -137,7 +135,6 @@ const HomeNew = (count, value) => {
             console.log(timeUpdate);
             // object to send compotent Sensor
             let sensorObject = new Object;
-
             sensorArrayParams.forEach(element => {
                 if (element.value['2M'].INS || element.value['2M'].INS === 0) {
                     if (element.name == "Ptype") {
@@ -154,8 +151,6 @@ const HomeNew = (count, value) => {
 
     }
 
-
-
     const startFlowSendRequest = () => {
         setButtonText('Идет прием данных...');
         if (timerForSend !== null) {
@@ -171,14 +166,13 @@ const HomeNew = (count, value) => {
 
     const element = sensors.map((item, i) => {
         return (
-            <Sensor sensor={item} value={sensorsValue} valueobj={objValue} key={i} timeArrival={timeArrival} />
+            <Sensor sensor={item} valueobj={objValue} key={i} timeArrival={timeArrival} />
         )
     });
     console.log('rerendorApp');
     return (
         <div className="Home" >
             <h1 className='Header'></h1>
-
             <div className="fixed-container">
                 <div className='area'>
                     {element}
